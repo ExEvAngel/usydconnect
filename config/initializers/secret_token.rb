@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Usydconnect::Application.config.secret_key_base = '18c8faa6dbbe0dd50df9e91ba905eb092feefbc66a7c2f82570e3333d93c27c5cf5cbb4a66cc258950df5fa06742531bddf9ed03561fbb55adeb74e4d190d9d6'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Usydconnect::Application.config.secret_key_base = secure_token
