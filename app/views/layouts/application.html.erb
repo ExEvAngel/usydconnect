@@ -5,13 +5,26 @@
 		<title><%= full_title(yield(:title)) %></title>
 		
 
-		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= stylesheet_link_tag("application", { media: "all", "data-turbolinks-track" => true } ) %>
+		<%= javascript_include_tag("application", "data-turbolinks-track" => true) %>
 		<%= csrf_meta_tags %>
 	</head>
 
 	<body>
-	
+
+		<div id="header">
+			<table>
+				<tr>
+					<td>
+						<h1> USYD - Connect </h1>
+					</td>
+					<td>
+						<input type="text" name="username">username</input>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
 
 		<%= yield %>
 
