@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<%= link_to(image_tag("logo.png", id: "logo"), '#') %>
+			<div id="sign" class="nav pull-right">
+				<input type="text"></input>
+				<input type="text"></input>
+				<%= button_to "Login", '#' %>
+				<%= button_to "Sign Up", '#' %>
+			</div>
+			<div id="tabs">
+				<%= link_to "Home", '#' %>
+				<%= link_to "Following", '#' %>
+				<%= link_to "Profile", '#' %>
+			</div>
+		</div>
+	</div>
+</header>
