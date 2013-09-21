@@ -1,15 +1,15 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to(image_tag("logo.png", id: "logo"), '#') %>
+			<%= link_to(image_tag("logo.png", id: "logo"), root_path) %>
 			<div id="sign" class="nav pull-right">
 				<input type="text"></input>
 				<input type="text"></input>
 				<%= button_to "Login", '#' %>
-				<%= button_to "Sign Up", '#' %>
+				<%= link_to "Sign Up", signup_path %>
 			</div>
 			<div id="tabs">
-				<%= link_to "Home", '#' %>
+				<%= link_to "Home", root_path %>
 				<%= link_to "Following", '#' %>
 				<%= link_to "Profile", '#' %>
 			</div>
