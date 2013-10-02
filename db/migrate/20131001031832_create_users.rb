@@ -11,6 +11,5 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
-	add_index :users, :user_id
   end
 end
