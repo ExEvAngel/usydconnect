@@ -7,9 +7,10 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :is_staff, :default => false
       t.integer :xp, :default => 0
       t.boolean :is_banned, :default => false
-      t.date :member_since, default => Time.now
+      t.date :member_since, :default => Time.now
 
       t.timestamps
     end
+	add_index :users, :user_id
   end
 end
