@@ -9,4 +9,18 @@ module ApplicationHelper
 			"#{page_title}"
 		end
 	end
+	
+	def is_logged_in?
+  	username = cookies.signed[:username]
+  	password = cookies.signed[:pwd]
+  	
+  	if username.nil? || password.nil?
+  		false
+  	elsif password.empty? || username.empty? 
+  		false
+  	else
+      true
+  	end
+  end
+  
 end

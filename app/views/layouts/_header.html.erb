@@ -3,15 +3,24 @@
 		<div class="container">
 			<%= link_to(image_tag("logo.png", id: "logo"), root_path) %>
 			<div id="sign" class="nav pull-right">
-				<input type="text"></input>
-				<input type="text"></input>
-				<%= button_to "Login", '#' %>
-				<%= link_to "Sign Up", signup_path %>
+				<% if !is_logged_in? %>
+				  <%= form_tag('/login', method: 'post') do %>
+				    <%= text_field_tag :username %>
+				    <%= password_field_tag :password %>
+				    <%= submit_tag "Login", class: "btn btn-primary" %>
+					<%= link_to "Sign up", signup_path %>
+				  <% end %>
+				  
+				<% else %>
+				  <%= link_to "Sign out", signout_path, { :method => "delete" } %>
+				<% end %>
 			</div>
-			<div id="tabs">
+			<div>
+			<ul class="nav nav-tabs">
 				<%= link_to "Home", root_path %>
 				<%= link_to "Following", '#' %>
 				<%= link_to "Profile", '#' %>
+			</ul>
 			</div>
 		</div>
 	</div>

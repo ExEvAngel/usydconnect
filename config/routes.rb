@@ -3,10 +3,13 @@ Usydconnect::Application.routes.draw do
   
   root "static_pages#home"
 
+  match("/login", to: "static_pages#create", via: "post")
   match("/help", to: "static_pages#help", via: "get")
   match("/about", to: "static_pages#about", via: "get")
   match("/policy", to: "static_pages#policy", via: "get")
+  match("/signout", to: "static_pages#destroy", via: "delete")
 
+  match("/new", to: "users#create", via: "post")
   match("/signup", to: "users#new", via: "get")
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

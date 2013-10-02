@@ -6,19 +6,17 @@
 
 	<body style="color: red;">
 		<div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			
+						
 			<p>Hello World! Welcome.</p>
 			<p>Hi! (from Catherine)</p>
 			<p>brian, mark, rick. </p>
 			<p> and sorry about dota </p>
+			
+			<% @user.each do |u| %>
+			<%= u.username %>
+			<br>
+			<% end %>
+			<br>
 			<p>
 				This is the link to tutorials: 
 				<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
