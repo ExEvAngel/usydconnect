@@ -2,8 +2,20 @@
 <html>
 	<%# Generate title. %>
 	<% provide(:title, 'Help') %>
-
 	<body>
-		<p>Help!</p>
+		<div class="container">
+			<h2> Help! </h2>
+			<p> If you're having problems, read the followng FAQs before contacting moderators.</p>
+			<ol>
+				<li><h4> Why can't I access USYD Connect? </h4></li>
+					<p> Given the content of this forum is targeted at the USYD community, only those with a USYD email domain are able to access this service. Otherwise, it is possible you have entered in the wrong username password combination into our system and it cannot be verified. Please ensure your details are correct. If you suspect you have been banned from the forum, please contact one of the moderators to seek further details.</p>
+				<li><h4> How do I post anything on USYD Connect? </h4></li>
+					<p> Firstly, a USYD Connect account is required to post any content on the forum. Secondly, you must remain signed during the posting process. </p>
+				<li><h4> How do I change my user and private settings? </h4></li>
+					<p> Go to your user profile located on the navigation bar when logged in to edit your settings. </p>
+				<li><h4> Where are your policies listed? </h3></li>
+					<p> Click on the folloing <%= link_to("Policy", policy_path) %> page to find out more</p>
+			</ol>
+		</div>
 	</body>
 </html>
