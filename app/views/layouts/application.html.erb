@@ -9,13 +9,16 @@
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<%= render "layouts/header" %>
-		<%= render "layouts/navbar" %>
 	</head>
 	<body>
+
+		<%= render "layouts/header" %>
 		<div class="container">
 			<%= yield %>
 		</div>
+
+		&nbsp
+	
 		<%= render "layouts/footer" %>
 	</body>
 </html>

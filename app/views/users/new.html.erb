@@ -1,20 +1,44 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_tag('/new', method: 'post') do %>
+<!DOCTYPE html>
+    <html>
+    <% provide(:title, 'Sign up') %>
+   
 
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
+    <body>
 
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+        <div class="content">
+            <div id="content">
 
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-    <br>
-    <%= submit_tag "Sign up", class: "btn btn-primary" %>
-	<% end %>
-  </div>
-</div>
+     <h1>Sign up</h1>
+
+                    <%= form_tag('/new', method: 'post') do %>
+                        <table id="signup">
+                            <tr>
+                                <td><%= label_tag :username %></td>
+                                <td><%= text_field_tag :username %></td>
+                            </tr>
+                            <tr>
+                                <td><%= label_tag :email %></td>
+                                <td><%= text_field_tag :email %></td>
+                            </tr>
+                            <tr>
+                                <td><%= label_tag :password %></td>
+                                <td><%= password_field_tag :password %></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <%= submit_tag "Sign up", class: "btn btn-primary" %>
+                    <% end %>
+
+                    <br>
+                     <p>
+            add realtime checking if name is available.<br>
+            add a new input field for verification. this field appears when user clicks signup. the signup button will change to "verify". add function to randomly generate and email verification code. add function to check if verification code is correct.<br>
+            also, make sure this page is not available to users that have already logged in. ie, if i type the URL address /signup while im logged in, it should error.
+        </p>
+            </div>
+        </div>
+
+
+    </body>
+</html>
