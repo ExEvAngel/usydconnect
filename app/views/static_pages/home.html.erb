@@ -11,7 +11,7 @@
 				<div id="search">
 				<table>
 					<%= form_tag('/search', method: '#') do %>
-						<td><%= text_field_tag(:search, "", :placeholder => "search", :class => "search-field")%></td>
+						<td><%= text_field_tag(:search, "", :placeholder => "  search", :class => "search-field")%></td>
 						<td><%= link_to(image_tag("dropdownarrow.png", id: "dropdown"), '#') %></td>
 						<td><%= submit_tag("Search", id: "search-button")%></td>
 					<% end %>

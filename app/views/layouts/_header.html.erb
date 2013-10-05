@@ -6,8 +6,8 @@
 			<div id="sign">
 				<% if !is_logged_in? %>
 					<%= form_tag('/login', method: 'post') do %>
-						<%= text_field_tag(:username, "", :placeholder => "username", :class => "text-field", :maxlength => 16)%>
-						<%= password_field_tag(:password, "", :placeholder => "password", :class => "text-field", :maxlength => 16)%>
+						<%= text_field_tag(:username, "", :placeholder => " username", :class => "text-field", :maxlength => 16)%>
+						<%= password_field_tag(:password, "", :placeholder => " password", :class => "text-field", :maxlength => 16)%>
 						<%= submit_tag("Login", id: "button")%>
 						<%= link_to("<button>Sign Up</button>".html_safe, signup_path, id: "button")%>
 					<% end %>
