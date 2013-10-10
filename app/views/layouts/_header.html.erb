@@ -19,14 +19,9 @@
 		</div>
 	</div>
 	<div class="nav">
-		<% if !is_logged_in? %>
+		<% if is_logged_in? %>
 			<ul id="nav">
-				<li class="navitem"><%= link_to("Home", root_path, :class => "link")%></li>
-				<li>&nbsp</li>
-			</ul>
-		<% else %>
-			<ul id="nav">
-				<li class="navitem"><%= link_to("Home", root_path, :class => "link")%></li>
+				<li class="navitem"><%= link_to("Forum", root_path, :class => "link")%></li>
 				<li>&nbsp</li>
 				<li class="navitem"><%= link_to("Following", '#', :class => "link")%></li>
 				<li>&nbsp</li>
