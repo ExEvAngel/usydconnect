@@ -8,9 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+
+
  */
+
 
 .error
 {
@@ -522,3 +523,8 @@ label
 	font-style: italic;
 	color: #F2F2F2;
 }
+.navitem :hover {
+  background: #5b5c5c; }
+
+.navitem :active {
+  background: #3f4040; }

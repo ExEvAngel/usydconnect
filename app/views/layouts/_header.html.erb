@@ -1,34 +1,41 @@
 <header>
 	<div class="header">
-		<div id="header-inner">
-			<%= link_to(image_tag("logo.png", id: "logo"), root_path) %>
-			<%= link_to("USYD Connect", root_path, id: "title") %>
-			<div id="sign">
-				<% if !is_logged_in? %>
-					<%= form_tag('/login', method: 'post') do %>
-						<%= text_field_tag(:username, "", :placeholder => " username", :class => "text-field", :maxlength => 16)%>
-						<%= password_field_tag(:password, "", :placeholder => " password", :class => "text-field", :maxlength => 16)%>
-						<%= submit_tag("Login", id: "button")%>
-						<%= link_to("<button>Sign Up</button>".html_safe, signup_path, id: "button")%>
-					<% end %>
-				<% else %>
-					Logged in as: <i> to be implemented </i>
-					<%= link_to("<button>Sign Out</button>".html_safe, signout_path, { :method => "delete" })%>
-				<% end %>
+		<%= link_to(image_tag("logo.png", class: "logo"), root_path) %>
+		<%= link_to("USYD Connect", root_path, class: "name") %>
+		<div class="sign-outer">
+			<% if is_logged_in? %>
+			<div class="sign-inner">
+				<i class="error">Logged in as: to be implemented</i>
 			</div>
+			<div class="sign-inner">
+				<%= button_to("Sign Out", signout_path, method: "delete", class: "button" ) %>
+			</div>
+			<% else %>
+				<div class="sign-inner">
+					<%= form_tag('/login', method: 'post') do %>
+						<%= text_field_tag(:username, "", placeholder: "username", class: "text-field", maxlength: 16) %>
+						<%= password_field_tag(:password, "", placeholder: "password", class: "text-field", maxlength: 16) %>
+						<%= submit_tag("Login", class: "button") %>
+					<% end %>
+				</div>
+				<div class="sign-inner">
+					<%= button_to("Sign Up", signup_path, method: "get", class: "button") %>
+				</div>
+			<% end %>
 		</div>
 	</div>
-	<div class="nav">
+	<div class="navbar">
 		<% if is_logged_in? %>
-			<ul id="nav">
-				<li class="navitem"><%= link_to("Forum", root_path, :class => "link")%></li>
+			<ul class="tab">
+				<li><%= link_to("Forum", root_path, class: "link")%></li>
 				<li>&nbsp</li>
-				<li class="navitem"><%= link_to("Following", '#', :class => "link")%></li>
+				<li><%= link_to("Following", '#', class: "link")%></li>
 				<li>&nbsp</li>
-				<li class="navitem"><%= link_to("Profile", '#', :class => "link")%></li>
-				<li id="gap">&nbsp</li>
-				<li class="navitem"><%= link_to("New Thread", '#', :class => "link")%></li>
+				<li><%= link_to("Profile", '#', class: "link")%></li>
+				<li><p class="gap">&nbsp</p></li>
+				<li><%= link_to("New Thread", '#', class: "link")%></li>
 			</ul>
 		<% end %>
 	</div>
 </header>
+

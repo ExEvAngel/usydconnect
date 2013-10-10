@@ -3,117 +3,101 @@
 	<%# Generate title. %>
 	<% provide(:title, 'Home') %>
 
-
 	<body>
 		<div class="content-outer">
 			<div class="content-inner">
-				<br>
-				<div id="search">
-				<table>
+				<table class="center">
 					<%= form_tag('/search', method: '#') do %>
-						<td><%= text_field_tag(:search, "", :placeholder => "  search", :class => "search-field")%></td>
-						<td><%= link_to(image_tag("dropdownarrow.png", id: "dropdown"), '#') %></td>
-						<td><%= submit_tag("Search", id: "search-button")%></td>
+						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
+						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '#') %></td>
+						<td><%= submit_tag("Search", class: "button") %></td>
 					<% end %>
 				</table>
-	                  
-				</div>
-				  <br>
-					.                           NOTE! DO NOT SEARCH! WILL ERROR!
-					<h1>Tasks to do:</h1>
-				<p>
-					make the tabs change color so that the current tab is highlighted.
-					<br>
-					login button looks weird on safari.
-					signup button looks weird on chrome.
-					needs fixing!!!
+				<p class="error">NOTE! DO NOT SEARCH! WILL CAUSE ERROR!</p>
+				<h2 class="error">Tasks to do:</h2>
+				<p class="error">
+					Make the tabs change color so that the current tab is highlighted.
 				</p>
-			
-				<% @user.each do |u| %>
-				<%= u.username %>
-				<br>
-				<% end %>
-				<br>
+				<p class="error">
+					To do by Monday 14/10:<br>
+					Brian - <%= link_to("Thread", '#') %><br>
+					Mark - <%= link_to("New Thread", '#') %><br>
+					Rick - <%= link_to("Search Results", '#') %><br>
+				</p>
 				<p>
 					This is the link to tutorials: 
 					<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
 				</p>
-
-				<%= link_to("Thread", '#') %>
-				to do - brian - by monday 14/10 </br>
-				<%= link_to("New Thread", '#') %>
-				to do - mark - by monday 14/10 </br>
-				<%= link_to("Search Results", '#') %>
-				to do - rick - by monday 14/10 </br>
-
-
-					<div id="test" onclick="test()">
-						hello world!
-					</div>
-					<br>
-					<br>
-
-			
-				<table>
-					<tr>
-						<div id="pinned">
-							<div id="table-content">
-								
-									<div id="table-title">
-										
-											Pinned
-										
-									</div>
-									<ul>
-										<li>a</li>
-										<li>b</li>
-									</ul>
+				<div class="margin">
+					<div class="center">
+						<div class="section-inner">
+							<div class="section-title">Pinned</div>
+								<table class="table-inner">
+									<tr>
+										<td class="table-name">Thread Title</td>
+										<td class="table-auth">Posted By</td>
+										<td class="table-date">Posted Date</td>
+										<td class="table-view">Views</td>
+										<td class="table-rept">Reputation</td>
+									</tr>
+									<tr>
+										<td>thread name</td>
+										<td>author</td>
+										<td>13:20 11/4/13</td>
+										<td># views</td>
+										<td># rept</td>
+									</tr>
+									<tr>
+										<td>thread name</td>
+										<td>author</td>
+										<td>9:34 21/11/13</td>
+										<td># views</td>
+										<td># rept</td>
+									</tr>
+								</table>
 							</div>
 						</div>
-					</tr>
-
-						<tr>
-							<div id="recent">
-								<div id="table-content">
-									<div id="table-title">Recent Posts</div>
-									<ul>
-										<li>a</li>
-										<li>b</li>
-									</ul>
-								</div>
+						<br>
+						<div class="section-inner">
+							<div class="section-title">Recent</div>
+								<table class="table-inner">
+									<tr>
+										<td class="table-name">Thread Title</td>
+										<td class="table-auth">Posted By</td>
+										<td class="table-date">Posted Date</td>
+										<td class="table-view">Views</td>
+										<td class="table-rept">Reputation</td>
+									</tr>
+									<tr>
+										<td>thread name</td>
+										<td>author</td>
+										<td>13:20 11/4/13</td>
+										<td># views</td>
+										<td># rept</td>
+									</tr>
+									<tr>
+										<td>thread name</td>
+										<td>author</td>
+										<td>9:34 21/11/13</td>
+										<td># views</td>
+										<td># rept</td>
+									</tr>
+								</table>
 							</div>
-						</tr>
-
-
-					<tr>
-						
-							<div id="categories">
-								<div id="table-content">
-									<div id="table-title">Categories</div>
-									<ul>
-										<li>a</li>
-										<li>b</li>
-									</ul>
-								</div>
-
+						</div>
+						<br>
+						<div class="section-inner-alt">
+							<div class="section-title">Categories</div>
+								<ul class="category">
+									<li>Category 1</li>
+									<li>Category 2</li>
+									<li>Category 3</li>
+								</ul>
 							</div>
-						</tr>
-						
-				</table>
-
-				
-
-
+						</div>
+					</div>
+				</div>
 			</div>
-
-
-
-
 		</div>
-
-		
-
-	
-
 	</body>
 </html>
