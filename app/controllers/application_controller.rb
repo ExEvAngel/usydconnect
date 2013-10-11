@@ -18,11 +18,16 @@ class ApplicationController < ActionController::Base
   end
   
   def valid_login(user, pass)
-	if user = User.where(username: user)
-	  true
-	else
-	  false
-	end
+    @user = User.where(username: user)
+  	if !@user.empty?
+      if (@user[0].password).eql? pass
+        true
+      else
+        false
+      end
+  	else
+  	  false
+  	end
   end
 
 	# Creates signed user cookies
