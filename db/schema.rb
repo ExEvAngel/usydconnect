@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001031832) do
+ActiveRecord::Schema.define(version: 20131017101012) do
+
+  create_table "threads", force: true do |t|
+    t.string   "title",      limit: 200
+    t.string   "body",       limit: 500
+    t.boolean  "is_closed",              default: false
+    t.integer  "no_flags",               default: 0
+    t.integer  "views",                  default: 0
+    t.datetime "Date",                   default: '2013-10-17 10:20:55'
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username",     limit: 16
