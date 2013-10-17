@@ -12,6 +12,5 @@ class UsersController < ApplicationController
   
   def new
     redirect_to root_path unless !is_logged_in?
-    @user = User.new
   end
 end
