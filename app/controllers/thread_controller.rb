@@ -8,7 +8,7 @@ class ThreadController < ApplicationController
   
   def create
 	redirect_to root_path unless is_logged_in?
-	@thread = Threads.new(:title => params[:title], :body => params[:body])
+	@thread = Threads.new(:title => params[:title], :body => params[:body], :user_id => 1)
 	if @thread.save
       redirect_to thread_path(:id => @thread.id)
     else
