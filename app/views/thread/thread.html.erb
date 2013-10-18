@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<%# Generate title. %>
+	<% provide(:title, 'Home') %>
+
+	<body>
+		<div class="content-outer">
+			<div class="content-inner">
+			Thread
+			<%= params[:id] %>
+			<%= @title %>
+			<%= @body %>
+			<br>
+			...
+			<br>
+		
+			</div>
+		</div>
+	</body>
+</html>

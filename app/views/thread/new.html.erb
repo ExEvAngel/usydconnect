@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<%# Generate title. %>
+	<% provide(:title, 'Home') %>
+
+	<body>
+		<div class="content-outer">
+			<div class="content-inner">
+			New Thread!
+			
+			<%= form_tag('/thread/submit', method: 'post') do %>
+					Title: <%= text_field_tag(:title, "", placeholder: "", class: "text-field", maxlength: 200) %>
+					<br><br>
+					Body: <%= text_field_tag(:body, "", placeholder: "", class: "text-field", maxlength: 500) %>
+					<br><br>
+				<%= submit_tag("Create", class: "button") %>
+			<% end %>
+		
+			</div>
+		</div>
+	</body>
+</html>
