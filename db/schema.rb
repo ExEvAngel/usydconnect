@@ -14,12 +14,13 @@
 ActiveRecord::Schema.define(version: 20131017101012) do
 
   create_table "threads", force: true do |t|
-    t.string   "title",      limit: 200
-    t.string   "body",       limit: 500
+    t.integer  "user_id",                                                null: false
+    t.string   "title",      limit: 200,                                 null: false
+    t.string   "body",       limit: 500,                                 null: false
     t.boolean  "is_closed",              default: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "Date",                   default: '2013-10-17 10:20:55'
+    t.datetime "Date",                   default: '2013-10-18 02:56:09'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,7 +32,7 @@ ActiveRecord::Schema.define(version: 20131017101012) do
     t.boolean  "is_staff",                default: false
     t.integer  "xp",                      default: 0
     t.boolean  "is_banned",               default: false
-    t.date     "member_since"
+    t.date     "member_since",            default: '2013-10-18'
     t.datetime "created_at"
     t.datetime "updated_at"
   end

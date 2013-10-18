@@ -8,7 +8,7 @@ class ThreadController < ApplicationController
   
   def create
 	redirect_to root_path unless is_logged_in?
-	@thread = Threads.new(:title => params[:title], :body => params[:body], :user_id => 1)
+	@thread = Threads.new(:title => params[:title], :body => params[:body], :user_id => User.get_user_id(@username))
 	if @thread.save
       redirect_to thread_path(:id => @thread.id)
     else
@@ -20,6 +20,8 @@ class ThreadController < ApplicationController
 	@thread = Threads.where(id: params[:id])
 	@title = @thread[0].title
 	@body = @thread[0].body
+	@time = @thread[0].Date
+	@by = User.get_username(@thread[0].user_id)
   end
   
   def destroy

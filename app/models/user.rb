@@ -4,9 +4,12 @@ class User < ActiveRecord::Base
  
   def self.get_user_id(user)
     @user = User.where(username: user)
-  	if !@user.empty?
-      1
-	end
+    @user[0].id
+  end
+  
+  def self.get_username(id)
+    @user = User.where(id: id)
+    @user[0].username
   end
 
 end

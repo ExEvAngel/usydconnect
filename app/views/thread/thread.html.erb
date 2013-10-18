@@ -7,13 +7,18 @@
 		<div class="content-outer">
 			<div class="content-inner">
 			Thread
-			<%= params[:id] %>
-			<%= @title %>
-			<%= @body %>
+			<%= params[:id] %><br>
+			<%= @title %><br>
+			<%= @body %><br>
+			by: <%= @by %><br>
+			On: <%= @time %>
 			<br>
 			...
 			<br>
-		
+			
+			<p class="error">
+				Need to fix time format and change timezone
+			</p>
 			</div>
 		</div>
 	</body>
