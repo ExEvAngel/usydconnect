@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+  before_action :get_username
+	
   def create
     @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
     if @user.save
@@ -13,4 +14,9 @@ class UsersController < ApplicationController
   def new
     redirect_to root_path unless !is_logged_in?
   end
+  
+	private
+	def get_username
+		@username = cookies.signed[:username]
+	end
 end

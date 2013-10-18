@@ -1,4 +1,5 @@
 class ThreadController < ApplicationController
+  before_action :get_username
 
   def new
 	redirect_to root_path unless is_logged_in?
@@ -26,4 +27,8 @@ class ThreadController < ApplicationController
   	redirect_to root_path
   end
 
+	private
+	def get_username
+		@username = cookies.signed[:username]
+	end
 end

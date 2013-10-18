@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :get_username
   
   def create
 	if valid_login(params[:username], params[:password])
@@ -23,4 +24,10 @@ class StaticPagesController < ApplicationController
 
   def policy
   end
+  
+  	private
+		def get_username
+			@username = cookies.signed[:username]
+		end
+		
 end
