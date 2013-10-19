@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     redirect_to root_path unless !is_logged_in?
   end
   
+  def profile
+  
+  end
 	private
 	def get_username
 		@username = cookies.signed[:username]

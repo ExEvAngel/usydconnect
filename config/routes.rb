@@ -9,6 +9,7 @@ Usydconnect::Application.routes.draw do
   match("/policy", to: "static_pages#policy", via: "get")
   match("/signout", to: "static_pages#destroy", via: "delete")
 
+  match("/profile", to: "users#profile", via: "get")
   match("/new", to: "users#create", via: "post")
   match("/signup", to: "users#new", via: "get")
   

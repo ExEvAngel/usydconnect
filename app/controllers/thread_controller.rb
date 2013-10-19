@@ -17,13 +17,12 @@ class ThreadController < ApplicationController
   end
   
   def thread
-  # trying to join tables instead but it isn't working 
-  # Athread.join(:users).where(id: params[:id])
-	@thread = Athread.where(id: params[:id])
+	@thread = Athread.joins(:user).where(id: params[:id])
 	@title = @thread[0].title
 	@body = @thread[0].body
 	@time = @thread[0].Date
-	@by = User.get_username(@thread[0].user_id)
+	@user = User.joins(:athread).where(id: @thread[0].user_id)
+	@by = @user[0].username
   end
   
   def destroy

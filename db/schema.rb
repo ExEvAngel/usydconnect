@@ -29,18 +29,18 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.boolean  "is_closed",              default: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "Date",                   default: '2013-10-19 03:08:09'
+    t.datetime "Date",                   default: '2013-10-19 06:05:31'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
-    t.integer  "threads_id"
+    t.integer  "athread_id"
     t.string   "body",       limit: 500,                                 null: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "date",                   default: '2013-10-19 02:48:22'
+    t.datetime "date",                   default: '2013-10-19 06:05:31'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.integer  "user_id"
     t.string   "title",      limit: 200
     t.string   "body",       limit: 500
-    t.datetime "saved_at",               default: '2013-10-19 02:48:22'
+    t.datetime "saved_at",               default: '2013-10-19 06:05:31'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "follow_threads", force: true do |t|
     t.integer  "user_id"
-    t.integer  "threads_id"
+    t.integer  "athread_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
   end
 
   create_table "posts", force: true do |t|
-    t.integer  "threads_id"
+    t.integer  "athread_id"
     t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -89,20 +89,8 @@ ActiveRecord::Schema.define(version: 20131019030417) do
   end
 
   create_table "thread_tags", force: true do |t|
-    t.integer  "threads_id"
+    t.integer  "athread_id"
     t.integer  "tag_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "threads", force: true do |t|
-    t.integer  "user_id"
-    t.string   "title",      limit: 200,                                 null: false
-    t.string   "body",       limit: 500,                                 null: false
-    t.boolean  "is_closed",              default: false
-    t.integer  "no_flags",               default: 0
-    t.integer  "views",                  default: 0
-    t.datetime "Date",                   default: '2013-10-19 02:48:22'
     t.datetime "created_at"
     t.datetime "updated_at"
   end

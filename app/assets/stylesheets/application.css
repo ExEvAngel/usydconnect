@@ -214,6 +214,7 @@ header
 footer
 {
 	margin: 0 auto;
+	padding-bottom: 10px;
 
 	height: 99%;
 	width: 958px;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<%# Generate title. %>
+	
+	<% provide(:title, 'View Profile: @username') %>
+
+	<body>
+		<div class="nav-left">
+			<div class="nav-left-details">
+				<h3>username</h3>
+				<h4>Student</h4>
+					<br>
+				<ul>
+					<li>
+						Send private message
+						<%-#= link_to image_tag("/images/message-icon.png") + "Send private message", url_for({:controller => 'controller_name', :action => 'action_name'}), :class => 'left-link', :remote => true -%>
+					</li>
+					<li>Find latest posts</li>
+					<li>etc...</li>
+				</ul>
+			</div>
+
+			<div class="nav-left-stats">
+				<ul>
+					<li>
+						<h4>Join Date:</h4> 
+						<p>25 October 2013</p> 
+						<%-# <%= @joindate (or whatever it is) -%>
+					</li>
+					<li>
+						<h4>Questions:</h4>
+						<p>21 Questions</p>
+						<%-# <%= @postcount??? -%>
+					</li>
+					<li>
+						<h4>Answers:</h4>
+						<p>1 Answer</p>
+						<%-# <%= @answercount??? -%>
+					</li>
+					<li>
+						<h4>Level:</h4>
+						<p>5</p>
+						<%-#!--- .... -%>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="nav-middle">
+				<ul>
+					<li>My Activity</li>
+					<li>About Me</li>
+					<li>Messages</li>
+				</ul>
+			</div>
+
+	</body>
+</html>
