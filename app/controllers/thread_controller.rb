@@ -8,7 +8,7 @@ class ThreadController < ApplicationController
   
   def create
 	redirect_to root_path unless is_logged_in?
-	@thread = Threads.new(:title => params[:title], :body => params[:body], :user_id => User.get_user_id(@username))
+	@thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => User.get_user_id(@username))
 	if @thread.save
       redirect_to thread_path(:id => @thread.id)
     else
@@ -17,7 +17,9 @@ class ThreadController < ApplicationController
   end
   
   def thread
-	@thread = Threads.where(id: params[:id])
+  # trying to join tables instead but it isn't working 
+  # Athread.join(:users).where(id: params[:id])
+	@thread = Athread.where(id: params[:id])
 	@title = @thread[0].title
 	@body = @thread[0].body
 	@time = @thread[0].Date
