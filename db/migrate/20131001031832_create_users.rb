@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :username, :limit => 16, :null => false
       t.string :password, :limit => 16, :null => false
+	  t.string :password_digest
       t.string :email, :limit => 40, :null => false
       t.boolean :is_staff, :default => false
       t.integer :xp, :default => 0

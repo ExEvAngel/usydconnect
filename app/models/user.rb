@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
+
   has_many :user_achievement
   has_many :achievement, :through => :user_achievement
   has_many :athread
@@ -11,8 +13,16 @@ class User < ActiveRecord::Base
   has_one :moderator
   has_one :draft_thread
   
-  validates :username, :uniqueness => true, :presence => true
-  validates :password, :presence => true
+ validates :username, uniqueness: { case_sensitive: false },
+            presence: true, 
+            length: { maximum: 16 }
+ validates :password, presence: true, 
+            length: { minimum: 6, maximum: 16 }
+ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w*]+\.?+[sydney]+\.[edu]+\.[au]+\z/i
+ validates :email, uniqueness: { case_sensitive: false }, 
+            presence: true, 
+            format: { with: VALID_EMAIL_REGEX }
+
   
   def self.get_user_id(user)
     @user = User.where(username: user)

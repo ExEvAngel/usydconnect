@@ -21,38 +21,96 @@
 			</div>
 
 			<div class="nav-left-stats">
-				<ul>
-					<li>
-						<h4>Join Date:</h4> 
-						<p>25 October 2013</p> 
-						<%-# <%= @joindate (or whatever it is) -%>
-					</li>
-					<li>
-						<h4>Questions:</h4>
-						<p>21 Questions</p>
+				<table>
+					<tr>
+						<td><h4>Join Date:</h4></td> 
+						<td><p><%= @member_since%></p></td>
+					</tr>
+					<tr>
+						<td><h4>Questions:</h4></td>
+						<td><p>21</p></td>
 						<%-# <%= @postcount??? -%>
-					</li>
-					<li>
-						<h4>Answers:</h4>
-						<p>1 Answer</p>
+					</tr>
+					<tr>
+						<td><h4>Answers:</h4></td>
+						<td><p>1</p></td>
 						<%-# <%= @answercount??? -%>
-					</li>
-					<li>
-						<h4>Level:</h4>
-						<p>5</p>
+					</tr>
+					<tr>
+						<td><h4>Level:</h4></td>
+						<td><p>5</p></td>
 						<%-#!--- .... -%>
-					</li>
-				</ul>
+					</tr>
+				</table>
 			</div>
 		</div>
 
 		<div class="nav-middle">
-				<ul>
-					<li>My Activity</li>
-					<li>About Me</li>
-					<li>Messages</li>
-				</ul>
+			<div data-role="page" data-url="<%= request.path %>" id ="details">
+				<div class="links" data-role="controlgroup" data-type="horizontal">
+					<%= link_to "My Activity", "#myactivity", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
+					<%= link_to "About Me", "#aboutme", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
+					<%= link_to "Messages", "#messages", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
+					<%= link_to "Preferences", "#preferences", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
+				</div>
+			</div>
+		</div>
+
+		<div class="maincontent">
+			<div class="subcontent" data-role="page" id="myactivity">
+				<div class="myactivitycontent" data-role="content">
+					<p> put thread titles maybe </p>
+				</div>			
 			</div>
 
+			<div class="subcontent" data-role="page" id="aboutme">
+				<table class="aboutmecontent" data-role="content">
+					<tr>
+						<td><strong>Full name:</strong></td>
+						<td>Tom Cruise</td>
+					</tr>
+
+					<tr>
+						<td><strong>University Course:</strong></td>
+						<td>n/a</td>
+					</tr>
+
+					<tr>
+						<td><strong>Current Year:</strong></td>
+						<td><p>n/a</p></td>
+					</tr>
+
+					<tr>
+						<div class="changeemail">
+							<tr>
+								<td><strong>Email address:</strong></td>
+								<td>
+									<ul>
+										<li>%=email%></li>
+										<li><button> Change Email </button></li>
+									<%#= gotta make action
+									link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
+									</ul>
+								</td>
+							</tr>
+						</div>
+					</tr>
+
+					<tr>
+						
+					</tr>
+
+					<tr>
+						<td><strong>Password:</strong></td>
+						<td><button> Change Password </button></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="subcontent" data-role="page" id="messages">
+				<div class="messages" data-role="content">
+					<p>You have no messages.</p>
+			</div>
+		</div>
 	</body>
 </html>
