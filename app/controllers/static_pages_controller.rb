@@ -25,6 +25,12 @@ class StaticPagesController < ApplicationController
   def policy
   end
   
+  def results
+  
+  @threads = Athread.all
+  
+  end
+  
   	private
 		def get_username
 			@username = cookies.signed[:username]

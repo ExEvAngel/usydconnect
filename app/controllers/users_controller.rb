@@ -16,9 +16,14 @@ class UsersController < ApplicationController
   end
   
   def profile
+    @user = User.where(id: @u_id)
+	@email = @user[0].email
+	@xp = @user[0].xp
   end
+  
 	private
 	def get_username
 		@username = cookies.signed[:username]
+		@u_id = User.get_user_id(@username)
 	end
 end

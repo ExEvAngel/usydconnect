@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<%# Generate title. %>
+	<% provide(:title, 'Search') %>
+
+	<body>
+		<div class="content-outer">
+			<div class="content-inner">
+				<table class="center">
+					<%= form_tag('/results', method: 'get') do %>
+						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
+						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '#') %></td>
+						<td><%= submit_tag("Search", class: "button") %></td>
+					<% end %>
+				</table>
+				
+				<div class="margin">
+					<div class="center">
+						<div class="section-inner">
+							<div class="section-title">Results</div>
+								<table class="table-inner">
+									<tr>
+										<td class="table-name">Thread Title</td>
+										<td class="table-auth">Posted By</td>
+										<td class="table-date">Posted Date</td>
+										<td class="table-view">Views</td>
+										<td class="table-view">Open</td>
+									</tr>
+									<% @threads.each do |t| %>
+									<tr>
+										<td><%= t.title %></td>
+										<td><%= author(t.user_id) %></td>
+										<td><%= t.Date.strftime("%R %d/%m/%y") %></td>
+										<td><%= t.views %></td>
+										<td><%= link_to "Open" ,thread_path(:id => t.id) %></td>
+									</tr>
+									<% end %>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

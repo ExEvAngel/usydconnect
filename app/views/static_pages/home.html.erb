@@ -7,9 +7,9 @@
 		<div class="content-outer">
 			<div class="content-inner">
 				<table class="center">
-					<%= form_tag('/search', method: '#') do %>
+					<%= form_tag('/results', method: 'get') do %>
 						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
-						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '#') %></td>
+						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') %></td>
 						<td><%= submit_tag("Search", class: "button") %></td>
 					<% end %>
 				</table>
@@ -20,9 +20,9 @@
 				</p>
 				<p class="error">
 					To do by Monday 14/10:<br>
-					Brian - <%= link_to("Thread", '#') %><br>
-					Mark - <%= link_to("New Thread", '#') %><br>
-					Rick - <%= link_to("Search Results", '#') %><br>
+					Brian - <%= link_to("Thread", '') %><br>
+					Mark - <%= link_to("New Thread", '') %><br>
+					Rick - <%= link_to("Search Results", '') %><br>
 				</p>
 				<p>
 					This is the link to tutorials: 

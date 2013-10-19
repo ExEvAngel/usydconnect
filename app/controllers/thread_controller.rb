@@ -8,8 +8,13 @@ class ThreadController < ApplicationController
   
   def create
 	redirect_to root_path unless is_logged_in?
-	@thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => User.get_user_id(@username))
+	@thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
 	if @thread.save
+	  # xp increase for creating thread
+	  @user = User.where(id: @u_id)
+	  xp = @user[0].xp
+      @user[0].xp = xp + 5
+	  @user[0].save
       redirect_to thread_path(:id => @thread.id)
     else
       redirect_to root_path
@@ -17,7 +22,7 @@ class ThreadController < ApplicationController
   end
   
   def thread
-	@thread = Athread.joins(:user).where(id: params[:id])
+	@thread = Athread.where(id: params[:id])
 	@title = @thread[0].title
 	@body = @thread[0].body
 	@time = @thread[0].Date
@@ -33,5 +38,6 @@ class ThreadController < ApplicationController
 	private
 	def get_username
 		@username = cookies.signed[:username]
+		@u_id = User.get_user_id(@username)
 	end
 end

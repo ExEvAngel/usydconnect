@@ -37,8 +37,8 @@
 						<%-# <%= @answercount??? -%>
 					</tr>
 					<tr>
-						<td><h4>Level:</h4></td>
-						<td><p>5</p></td>
+						<td><h4>XP points:</h4></td>
+						<td><p><%= @xp %></p></td>
 						<%-#!--- .... -%>
 					</tr>
 				</table>
@@ -86,7 +86,7 @@
 								<td><strong>Email address:</strong></td>
 								<td>
 									<ul>
-										<li>%=email%></li>
+										<li><%=@email%></li>
 										<li><button> Change Email </button></li>
 									<%#= gotta make action
 									link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
