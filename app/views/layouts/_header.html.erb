@@ -5,8 +5,9 @@
 		<div class="sign-outer">
 			<% if is_logged_in? %>
 			<div class="sign-inner">
-				<i class="error">Logged in as: <%= @username %></i>
+				<p class="username">Logged in as: <%= @username %></p>
 			</div>
+			&nbsp&nbsp
 			<div class="sign-inner">
 				<%= button_to("Sign Out", signout_path, method: "delete", class: "button" ) %>
 			</div>

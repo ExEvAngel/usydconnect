@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.boolean  "is_closed",              default: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "Date",                   default: '2013-10-20 08:43:50'
+    t.datetime "Date",                   default: '2013-10-20 12:17:31'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.string   "body",       limit: 500,                                 null: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "date",                   default: '2013-10-20 08:43:50'
+    t.datetime "date",                   default: '2013-10-20 12:17:29'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.integer  "user_id"
     t.string   "title",      limit: 200
     t.string   "body",       limit: 500
-    t.datetime "saved_at",               default: '2013-10-20 08:43:50'
+    t.datetime "saved_at",               default: '2013-10-20 12:17:29'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,6 +95,17 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.datetime "updated_at"
   end
 
+  create_table "threads", force: true do |t|
+    t.string   "title",      limit: 200
+    t.string   "body",       limit: 500
+    t.boolean  "is_closed",              default: false
+    t.integer  "no_flags",               default: 0
+    t.integer  "views",                  default: 0
+    t.datetime "Date",                   default: '2013-10-17 10:20:55'
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_achievements", force: true do |t|
     t.integer  "user_id"
     t.integer  "achievement_id"
@@ -103,14 +114,13 @@ ActiveRecord::Schema.define(version: 20131019030417) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",        limit: 16,                        null: false
-    t.string   "password",        limit: 16,                        null: false
-    t.string   "password_digest"
-    t.string   "email",           limit: 40,                        null: false
-    t.boolean  "is_staff",                   default: false
-    t.integer  "xp",                         default: 0
-    t.boolean  "is_banned",                  default: false
-    t.date     "member_since",               default: '2013-10-20'
+    t.string   "username",     limit: 16
+    t.string   "password",     limit: 16
+    t.string   "email",        limit: 40
+    t.boolean  "is_staff",                default: false
+    t.integer  "xp",                      default: 0
+    t.boolean  "is_banned",               default: false
+    t.date     "member_since"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
