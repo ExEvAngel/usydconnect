@@ -68,20 +68,16 @@
 										<td class="table-view">Views</td>
 										<td class="table-rept">Reputation</td>
 									</tr>
+									<% @recent.reverse_each do |r| %>
 									<tr>
-										<td>thread name</td>
-										<td>author</td>
-										<td>13:20 11/4/13</td>
-										<td># views</td>
+										<td><%= link_to r.title  ,thread_path(:id => r.id) %></td>
+										<td><%= author(r.user_id) %></td>
+										<td><%= r.Date.strftime("%R %d/%m/%y") %></td>
+										<td><%= r.views %></td>
 										<td># rept</td>
 									</tr>
-									<tr>
-										<td>thread name</td>
-										<td>author</td>
-										<td>9:34 21/11/13</td>
-										<td># views</td>
-										<td># rept</td>
-									</tr>
+									
+									<% end %>
 								</table>
 							</div>
 						</div>
