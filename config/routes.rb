@@ -10,6 +10,7 @@ Usydconnect::Application.routes.draw do
   match("/signout", to: "static_pages#destroy", via: "delete")
   match("/results", to: "static_pages#results", via: "get")
   
+  match("/user/follow", to: "users#follow", via: "post")
   match("/profile", to: "users#profile", via: "get")
   match("/new", to: "users#create", via: "post")
   match("/signup", to: "users#new", via: "get")

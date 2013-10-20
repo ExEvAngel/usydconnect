@@ -17,8 +17,16 @@ class UsersController < ApplicationController
   
   def profile
     @user = User.where(id: params[:id])
+	@name = @user[0].username
+	@member_since = @user[0].member_since
 	@email = @user[0].email
 	@xp = @user[0].xp
+  end
+  
+  def follow
+    @follow = FollowUser.new(:user_id => @u_id, :second_user_id => params[:id])
+	@follow.save
+    redirect_to profile_path(:id => params[:id])
   end
   
 	private

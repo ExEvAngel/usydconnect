@@ -7,24 +7,26 @@
 	<body>
 		<div class="nav-left">
 			<div class="nav-left-details">
-				<h3>username</h3>
-				<h4>Student</h4>
+				<h3><%= @name %></h3>
+				<% if @is_staff %>
+				  <h4>Staff</h4>
+				<% else %>
+				  <h4>Student</h4>
+				<% end %>
 					<br>
+				<% if is_logged_in? %>
 				<ul>
-					<li>
-						Send private message
-						<%-#= link_to image_tag("/images/message-icon.png") + "Send private message", url_for({:controller => 'controller_name', :action => 'action_name'}), :class => 'left-link', :remote => true -%>
-					</li>
-					<li>Find latest posts</li>
-					<li>etc...</li>
+					<li><% button_to 'Follow User', user_follow_path(:id => params[:id]), :method => :post %></li>
 				</ul>
+				
+				<% end %>
 			</div>
 
 			<div class="nav-left-stats">
 				<table>
 					<tr>
 						<td><h4>Join Date:</h4></td> 
-						<td><p><%= @member_since%></p></td>
+						<td><p><%= @member_since.strftime("%d/%m/%y") %></p></td>
 					</tr>
 					<tr>
 						<td><h4>Questions:</h4></td>
