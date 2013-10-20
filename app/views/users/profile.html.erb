@@ -16,7 +16,11 @@
 					<br>
 				<% if is_logged_in? %>
 				<ul>
-					<li><% button_to 'Follow User', user_follow_path(:id => params[:id]), :method => :post %></li>
+					<% if not_already_following?(@u_id, params[:id]) %>
+					<li><%= button_to 'Follow User', user_follow_path(:id => params[:id]), :method => :post %></li>
+					<% else %>
+					<li><%= button_to 'Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post %></li>
+					<% end %>
 				</ul>
 				
 				<% end %>

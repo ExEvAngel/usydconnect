@@ -23,10 +23,18 @@ class UsersController < ApplicationController
 	@xp = @user[0].xp
   end
   
+  def unfollow
+    @follow = FollowUser.where(user_id: @u_id, second_user_id: params[:id])
+	if @follow[0].destroy
+		redirect_to profile_path(:id => params[:id])
+	end
+  end
+  
   def follow
     @follow = FollowUser.new(:user_id => @u_id, :second_user_id => params[:id])
-	@follow.save
-    redirect_to profile_path(:id => params[:id])
+	if @follow.save
+		redirect_to profile_path(:id => params[:id])
+	end
   end
   
 	private
