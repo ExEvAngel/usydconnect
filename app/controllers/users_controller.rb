@@ -16,14 +16,16 @@ class UsersController < ApplicationController
   end
   
   def profile
-  	@u_id = User.get_user_id(@username)
-    @user = User.where(id: @u_id)
+    @user = User.where(id: params[:id])
 	@email = @user[0].email
 	@xp = @user[0].xp
   end
   
 	private
 	def get_username
-	  @username = cookies.signed[:username]
+	  if is_logged_in?
+		@username = cookies.signed[:username]
+		@u_id = User.get_user_id(@username)
+	  end
 	end
 end

@@ -10,7 +10,7 @@
 			<%= params[:id] %><br>
 			<%= @title %><br>
 			<%= @body %><br>
-			by: <%= @by %><br>
+			by: <%= link_to @by, profile_path(:id => @thread[0].user_id) %><br>
 			On: <%= @time %>
 			<br>
 			...
