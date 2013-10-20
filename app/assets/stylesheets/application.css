@@ -281,6 +281,12 @@ p
 	color: black;
 }
 
+h1, h2, h3
+{
+	border: none;
+	outline: none;
+}
+
 h2
 {
 	padding-left: 4px;
@@ -517,17 +523,12 @@ li
 	font-size: 14px;
 }
 
-.nav-left-details h5
+.nav-left-details h3
 {
 	margin: 0;
 	padding: 0;
 
 	padding-top: 10px;
-
-	text-decoration: none;
-
-	font-family: "Lucida Sans Unicode";
-	font-size: 16px;
 }
 
 .nav-left-details p
