@@ -10,7 +10,7 @@
 			<%= params[:id] %><br>
 			<%= @title %><br>
 			<%= @body %><br>
-			by: <%= link_to @by, profile_path(:id => @thread[0].user_id) %><br>
+			by: <%= @by %><br>
 			On: <%= @time %>
 			<br>
 			...
@@ -19,7 +19,53 @@
 			<p class="error">
 				Need to fix time format and change timezone
 			</p>
-			</div>
+		<div data-role="fieldcontain" id="one">
+		
+
+		<% if !@comments.nil? %>
+				<div class="content-inner">
+				<table class="table-inner">
+
+					<% @mpage= ((@comments.length)/3.0).ceil %>
+					 @mpage %>
+					<% @cpage = 1 %>
+
+
+					<% @comments.find_in_batches(batch_size: 3) do |group| %>
+
+						<div data-role="fieldcontain" id="<%= sprintf '%02d',@cpage%>">
+						<% group.each do |c|  %>
+
+									<tr>
+									<td class="table-name">Username Says:</td>
+									</tr>
+									<tr>
+										<td><%= c.body %><%= group.length %></td>
+									</tr>
+						<% end %>
+								<!-- buttons here-->
+								<%if @mpage >1 %>
+								<!-- buttons here-->
+								<%end%>
+								<% @cpage = @cpage+1 %>
+
+						</div>
+					<% end %>
+
+				</table>
+				</div>
+		<% end %>  
+		</div>
+		<%= form_tag('/thread/submitc', method: 'post') do %>
+
+				<br><br>
+			<%= hidden_field_tag "at_id", params[:id] %>
+			<textarea 
+			<%= text_area_tag(:body, "", :cols => 100, :rows => 20, placeholder: "", class: "main-text-field", maxlength: 500) %>
+				<br><br>
+		<%= submit_tag("Submit", class: "button") %>
+		<% end %>
+		</div>
 		</div>
 	</body>
 </html>

@@ -14,6 +14,7 @@ class StaticPagesController < ApplicationController
   end
   
   def home
+    @recent = Athread.last(3)
   end
 
   def help

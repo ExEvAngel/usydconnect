@@ -26,14 +26,15 @@
 										<td class="table-view">Views</td>
 										<td class="table-view">Open</td>
 									</tr>
-									<% @threads.each do |t| %>
+									<% @recent.reverse_each do |r| %>
 									<tr>
-										<td><%= t.title %></td>
-										<td><%= author(t.user_id) %></td>
-										<td><%= t.Date.strftime("%R %d/%m/%y") %></td>
-										<td><%= t.views %></td>
-										<td><%= link_to "Open" ,thread_path(:id => t.id) %></td>
+										<td><%= link_to r.title  ,thread_path(:id => r.id) %></td>
+										<td><%= author(r.user_id) %></td>
+										<td><%= r.Date.strftime("%R %d/%m/%y") %></td>
+										<td><%= r.views %></td>
+										<td># rept</td>
 									</tr>
+									
 									<% end %>
 								</table>
 							</div>

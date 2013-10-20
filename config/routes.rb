@@ -19,6 +19,7 @@ Usydconnect::Application.routes.draw do
   match("/thread", to: "thread#thread", via: "get")
   match("/thread/new", to: "thread#new", via: "get")
   match("/thread/submit", to: "thread#create", via: "post")
+  match("/thread/submitc", to: "thread#createcomments", via: "post")
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

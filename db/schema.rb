@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.boolean  "is_closed",              default: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "Date",                   default: '2013-10-19 21:30:51'
+    t.datetime "Date",                   default: '2013-10-20 08:43:50'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.string   "body",       limit: 500,                                 null: false
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
-    t.datetime "date",                   default: '2013-10-19 21:30:50'
+    t.datetime "date",                   default: '2013-10-20 08:43:50'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.integer  "user_id"
     t.string   "title",      limit: 200
     t.string   "body",       limit: 500
-    t.datetime "saved_at",               default: '2013-10-19 21:30:50'
+    t.datetime "saved_at",               default: '2013-10-20 08:43:50'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
 
   create_table "moderators", force: true do |t|
     t.integer  "user_id"
-    t.date     "moderator_since", default: '2013-10-19'
+    t.date     "moderator_since", default: '2013-10-20'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20131019030417) do
     t.boolean  "is_staff",                   default: false
     t.integer  "xp",                         default: 0
     t.boolean  "is_banned",                  default: false
-    t.date     "member_since",               default: '2013-10-19'
+    t.date     "member_since",               default: '2013-10-20'
     t.datetime "created_at"
     t.datetime "updated_at"
   end
