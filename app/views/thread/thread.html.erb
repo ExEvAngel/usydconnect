@@ -10,14 +10,14 @@
 			<%= params[:id] %><br>
 			<%= @title %><br>
 			<%= @body %><br>
-			by: <%= @by %><br>
+			by: <%= link_to @by, profile_path(:id => @thread[0].user_id) %><br>
 			On: <%= @time %>
 			<br>
 			...
 			<br>
 			
 			<p class="error">
-				Need to fix time format and change timezone
+				Need to fix time format and change timezone. mark is gay
 			</p>
 		<div data-role="fieldcontain" id="one">
 		
@@ -27,7 +27,6 @@
 				<table class="table-inner">
 
 					<% @mpage= ((@comments.length)/3.0).ceil %>
-					 @mpage %>
 					<% @cpage = 1 %>
 
 

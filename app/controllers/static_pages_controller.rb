@@ -27,9 +27,7 @@ class StaticPagesController < ApplicationController
   end
   
   def results
-  
-  @threads = Athread.all
-  
+    @threads = Athread.all
   end
   
   	private
