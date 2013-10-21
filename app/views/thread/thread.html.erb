@@ -17,7 +17,6 @@
 			<br>
 			
 			<p class="error">
-				Need to fix time format and change timezone. mark is gay
 			</p>
 		<div data-role="fieldcontain" id="one">
 		
@@ -26,8 +25,7 @@
 				<div class="content-inner">
 				<table class="table-inner">
 
-					<% @mpage= ((@comments.length)/3.0).ceil %>
-					<% @cpage = 1 %>
+					<% @mpage= ((@comments.length)/3.0).ceil %>					<% @cpage = 1 %>
 
 
 					<% @comments.find_in_batches(batch_size: 3) do |group| %>
@@ -36,7 +34,7 @@
 						<% group.each do |c|  %>
 
 									<tr>
-									<td class="table-name">Username Says:</td>
+									<td class="table-name">At <%= c.date%> <%= link_to author(c.user_id), profile_path(:id => c.user_id) %> Says:</td>
 									</tr>
 									<tr>
 										<td><%= c.body %><%= group.length %></td>

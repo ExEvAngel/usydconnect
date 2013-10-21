@@ -29,6 +29,11 @@ class StaticPagesController < ApplicationController
   def results
     @threads = Athread.all
   end
+
+  def follow
+    @users = Follow_users.where(user_id: @u_id)
+
+  end 
   
   	private
 		def get_username
