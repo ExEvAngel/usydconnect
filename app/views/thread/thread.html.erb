@@ -10,7 +10,7 @@
 			<%= params[:id] %><br>
 			<%= @title %><br>
 			<%= @body %><br>
-			by: <%= @by %><br>
+			by: <%= link_to @by, profile_path(:id => @thread[0].user_id) %><br>
 			On: <%= @time %>
 			<br>
 			...
@@ -27,7 +27,7 @@
 				<table class="table-inner">
 
 					<% @mpage= ((@comments.length)/3.0).ceil %>
-					 @mpage %>
+					 <%=@mpage %>
 					<% @cpage = 1 %>
 
 
@@ -37,7 +37,7 @@
 						<% group.each do |c|  %>
 
 									<tr>
-									<td class="table-name">Username Says:</td>
+									<td class="table-name">At <%= c.date%> <%= link_to author(c.user_id), profile_path(:id => c.user_id) %> Says:</td>
 									</tr>
 									<tr>
 										<td><%= c.body %><%= group.length %></td>

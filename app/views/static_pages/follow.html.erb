@@ -71,7 +71,7 @@
 									<% @recent.reverse_each do |r| %>
 									<tr>
 										<td><%= link_to r.title  ,thread_path(:id => r.id) %></td>
-										<td><%= link_to author(r.user_id), profile_path(:id=> r.user_id) %></td>
+										<td><%= author(r.user_id) %></td>
 										<td><%= r.Date.strftime("%R %d/%m/%y") %></td>
 										<td><%= r.views %></td>
 										<td># rept</td>
