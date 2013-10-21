@@ -24,16 +24,17 @@
 										<td class="table-auth">Posted By</td>
 										<td class="table-date">Posted Date</td>
 										<td class="table-view">Views</td>
-										<td class="table-view">Open</td>
+										<td class="table-rept">Reputation</td>
 									</tr>
 									<% @threads.each do |t| %>
-									<tr>
-										<td><%= t.title %></td>
-										<td><%= author(t.user_id) %></td>
-										<td><%= t.Date.strftime("%R %d/%m/%y") %></td>
-										<td><%= t.views %></td>
-										<td><%= link_to "Open" ,thread_path(:id => t.id) %></td>
-									</tr>
+										<tr>
+											<td><%= link_to title(t.id)  ,thread_path(:id => t.id) %></td>
+											
+											<td><%= link_to postby(t.id), profile_path(:id=> threadowner(t.id)) %></td>
+											<td><%= t.Date %></td>
+											<td><%= t.views %></td>
+											<td># rept</td>
+										</tr>
 									<% end %>
 								</table>
 							</div>
