@@ -52,6 +52,20 @@ def createcomments
       redirect_to root_path
     end
   end
+
+  def unfollow
+    @follow = FollowThread.where(user_id: @u_id, athread_id: params[:id])
+	if @follow[0].destroy
+		redirect_to thread_path(:id => params[:id])
+	end
+  end
+  
+  def follow
+    @follow = FollowThread.new(:user_id => @u_id, :athread_id => params[:id])
+	if @follow.save
+		redirect_to thread_path(:id => params[:id])
+	end
+  end
   
   def destroy
   	sign_out

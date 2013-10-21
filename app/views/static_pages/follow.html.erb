@@ -14,24 +14,11 @@
 					<% end %>
 				</table>
 
-				<h2 class="error">Tasks to do:</h2>
-				<p class="error">
-					Make the tabs change color so that the current tab is highlighted.
-				</p>
-				<p class="error">
-					To do by Monday 14/10:<br>
-					Brian - <%= link_to("Thread", '') %><br>
-					Mark - <%= link_to("New Thread", '') %><br>
-					Rick - <%= link_to("Search Results", '') %><br>
-				</p>
-				<p>
-					This is the link to tutorials: 
-					<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-				</p>
+				
 				<div class="margin">
 					<div class="center">
 						<div class="section-inner">
-							<div class="section-title">Pinned</div>
+							<div class="section-title">Threads Following</div>
 								<table class="table-inner">
 									<tr>
 										<td class="table-name">Thread Title</td>
@@ -40,57 +27,52 @@
 										<td class="table-view">Views</td>
 										<td class="table-rept">Reputation</td>
 									</tr>
-									<tr>
-										<td>thread name</td>
-										<td>author</td>
-										<td>13:20 11/4/13</td>
-										<td># views</td>
-										<td># rept</td>
-									</tr>
-									<tr>
-										<td>thread name</td>
-										<td>author</td>
-										<td>9:34 21/11/13</td>
-										<td># views</td>
-										<td># rept</td>
-									</tr>
+									<% if !@followt.nil? %>
+										<% @followt.each do |t| %>
+											<tr>
+												<td><%= link_to title(t.athread_id)  ,thread_path(:id => t.athread_id) %></td>
+												
+												<td><%= link_to postby(t.athread_id), profile_path(:id=> threadowner(t.athread_id)) %></td>
+												<td><%= threadpost(t.athread_id) %></td>
+												<td><%= threadview(t.athread_id) %></td>
+										
+												
+												<td># rept</td>
+											</tr>
+									
+										<% end %>
+									<% else %>
+										<tr><td>No threads following</td>
+										 </tr>
+									<% end %>
+
 								</table>
 							</div>
 						</div>
 						<br>
 						<div class="section-inner">
-							<div class="section-title">Recent</div>
+							<div class="section-title">Users Following</div>
 								<table class="table-inner">
 									<tr>
-										<td class="table-name">Thread Title</td>
-										<td class="table-auth">Posted By</td>
-										<td class="table-date">Posted Date</td>
-										<td class="table-view">Views</td>
+										<td class="table-name">Users</td>
+										<td class="table-auth">Member since</td>
 										<td class="table-rept">Reputation</td>
 									</tr>
-									<% @recent.reverse_each do |r| %>
-									<tr>
-										<td><%= link_to r.title  ,thread_path(:id => r.id) %></td>
-										<td><%= author(r.user_id) %></td>
-										<td><%= r.Date.strftime("%R %d/%m/%y") %></td>
-										<td><%= r.views %></td>
-										<td># rept</td>
-									</tr>
-									
+									<% if !@followu.nil? %>
+										<% @followu.each do |r| %>
+											<tr>
+												<td><%= link_to author(r.second_user_id)  ,profile_path(:id => r.second_user_id) %></td>
+												<td><%=membersince(r.second_user_id) %></td>
+												<td><%= xp(r.second_user_id) %></td>
+											</tr>
+										<% end %>
+									<% else %>
+										<tr><td>No threads following</td> </tr>
 									<% end %>
 								</table>
 							</div>
 						</div>
 						<br>
-						<div class="section-inner-alt">
-							<div class="section-title">Categories</div>
-								<ul class="category">
-									<li>Category 1</li>
-									<li>Category 2</li>
-									<li>Category 3</li>
-								</ul>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
