@@ -26,12 +26,23 @@
 								<% @comments.find_in_batches(batch_size: 3) do |group| %>
 									<% group.each do |c| %>
 										<tr>
-											<td class="table-name">
-												At <%= c.date%> <%= link_to author(c.user_id), profile_path(:id => c.user_id) %> Says:
+											<td><%= c.body %></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="thread-comments-footer">
+													<a href="google.com">like</a>
+													<div class="gap"></div>
+													<%= link_to author(c.user_id), profile_path(:id => c.user_id) %>
+													&nbsp&nbsp
+													<%= c.date%> 
+												</div>
 											</td>
 										</tr>
 										<tr>
-											<td><%= c.body %></td>
+											<td>
+												<hr>
+											</td>
 										</tr>
 									<% end %>			
 								<% end %>
@@ -46,7 +57,7 @@
 						<%= text_area_tag(:body, "", placeholder: "", class: "text-area-small", maxlength: 500) %>
 						<br>
 						<br>
-						<%= submit_tag("Submit", class: "button") %>
+						<%= submit_tag("Add Comment", class: "button") %>
 					<% end %>
 
 				</div>
@@ -54,6 +65,7 @@
 				<p class="error">
 					Need to fix time format and change timezone<br>
 					like and unlike comments?
+					currently, clicking like takes you to google XD
 				</p>
 			</div>
 		</div>
