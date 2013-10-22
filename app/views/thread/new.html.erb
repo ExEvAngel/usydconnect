@@ -6,28 +6,29 @@
 	<body>
 		<div class="content-outer">
 			<div class="content-inner" border="1px">
-				<h3>New Thread!</h3>			
+				<h2>New Thread</h2>			
 				<div class="messagebody">
 					<%= form_tag('/thread/submit', method: 'post') do %>
-							<div class="description">Title: </div>
-							<%= text_field_tag(:title, "", :size=>75, placeholder: "", class: "text-field", maxlength: 200) %>
-								<br><br>
-								
-							<%-#need to check that unit code is ABCD1234 -%>
+						<div class="description">
+							<p class="strong">&nbsp&nbsp*Title:</p>
+							<%= text_field_tag(:title, "", placeholder: "title", class: "text-field", maxlength: 100) %>
 							
-							<div class="description">Unit Code (optional): </div>
-							<%= text_field_tag(:unitcode, "", :size=>20, class: "text-field", maxlength: 8) %>						
-								<br><br>
-							<hr>
-								<br>
-							<textarea 
-							<%= text_area_tag(:body, "", :cols => 100, :rows => 50, placeholder: "", class: "main-text-field", maxlength: 500) %>
-								<br><br>
+							<p class="strong">&nbsp&nbspAdditional Tags:</p>
+							<%= text_field_tag(:unitcode, "", placeholder: 
+							"tags", class: "text-field", maxlength: 100) %>	
+
+							<br>
+							<br>
+						</div>
+
+						<%= text_area_tag(:body, "", placeholder: "", class: "text-area", maxlength: 1000) %>
+						<br>
+						<br>
 						<%= submit_tag("Create", class: "button") %>
 						<%= submit_tag("Save", class: "button") %>
-						<% end %>
-						<br>
+					<% end %>
 				</div>
+				<p class="error">needs to break title into tags (separated by spaces, commas or fullstops), and needs to update tags to db for searching later. </p>
 			</div>
 		</div>
 	</body>
