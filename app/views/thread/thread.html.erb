@@ -10,13 +10,6 @@
 				<div class="thread-header">
 					<h2><%= @title %></h2>
 					<div class="thread-details">
-						<% if is_logged_in? %>
-							<% if not_following?(@u_id, params[:id]) %>
-								<%= button_to('Follow Thread', thread_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-							<% else %>
-								<%= button_to('Unfollow Thread', thread_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
-							<% end %>
-						<% end %>
 						<%= link_to @by, profile_path(:id => @thread[0].user_id) %>
 						&nbsp&nbsp
 						<div class="italic"><%= @time %></div>
@@ -66,6 +59,11 @@
 							<br>
 							<br>
 							<%= submit_tag("Add Comment", class: "button") %>
+						<% end %>
+						<% if not_following?(@u_id, params[:id]) %>
+							<%= button_to('Follow Thread', thread_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+						<% else %>
+							<%= button_to('Unfollow Thread', thread_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
 						<% end %>
 					<% end %>
 				</div>
