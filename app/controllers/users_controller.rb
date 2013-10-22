@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :get_username
 
 	def create
-		@user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+		@user = User.new(:username => params[:username], :email => params[:email], :password => params[:password], :member_since => Time.now)
 		if @user.save
 			create_cookies(params[:username], params[:password])
 			redirect_to root_path
