@@ -6,17 +6,20 @@
 	<body>
 		<div class="content-outer">
 			<div class="content-inner">
+				<br>
 				<table class="center">
 					<%= form_tag('/results', method: 'get') do %>
 						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
-						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') %></td>
+						<!-- <td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') %></td> -->
 						<td><%= submit_tag("Search", class: "button") %></td>
 					<% end %>
 				</table>
 
 				<h2 class="error">Tasks to do:</h2>
 				<p class="error">
-					Make the tabs change color so that the current tab is highlighted.
+					Make the tabs change color so that the current tab is highlighted.<br>
+					reputation = xp of the author of a thread. needs to be implemented <br>
+					thread views not working. it can be incremented either when clicking the link, or when doc_ready, fully loaded<br>
 				</p>
 
 				<p>
@@ -64,19 +67,20 @@
 										<td class="table-rept">Reputation</td>
 									</tr>
 									<% @recent.reverse_each do |r| %>
-									<tr>
-										<td><%= link_to r.title  ,thread_path(:id => r.id) %></td>
-										<td><%= link_to author(r.user_id), profile_path(:id=> r.user_id) %></td>
-										<td><%= r.Date.strftime("%R %d/%m/%y") %></td>
-										<td><%= r.views %></td>
-										<td># rept</td>
-									</tr>
+										<tr>
+											<td><%= link_to r.title  ,thread_path(:id => r.id) %></td>
+											<td><%= link_to author(r.user_id), profile_path(:id=> r.user_id) %></td>
+											<td><%= r.Date.strftime("%R %d/%m/%y") %></td>
+											<td><%= r.views %></td>
+											<td># rept</td>
+										</tr>
 									
 									<% end %>
 								</table>
 							</div>
 						</div>
 					</div>
+					<br>
 				</div>
 			</div>
 		</div>

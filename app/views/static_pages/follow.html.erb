@@ -6,44 +6,32 @@
 	<body>
 		<div class="content-outer">
 			<div class="content-inner">
-				<table class="center">
-					<%= form_tag('/results', method: 'get') do %>
-						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
-						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') %></td>
-						<td><%= submit_tag("Search", class: "button") %></td>
-					<% end %>
-				</table>
+				<h2>Following</h2>
 
-				
 				<div class="margin">
 					<div class="center">
 						<div class="section-inner">
-							<div class="section-title">Threads Following</div>
+							<div class="section-title">Threads</div>
 								<table class="table-inner">
-									<tr>
+									<tr class="follow-thread">
 										<td class="table-name">Thread Title</td>
 										<td class="table-auth">Posted By</td>
 										<td class="table-date">Posted Date</td>
 										<td class="table-view">Views</td>
 										<td class="table-rept">Reputation</td>
+										<td class="table-unf">Unfollow</td>
 									</tr>
 									<% if !@followt.nil? %>
 										<% @followt.each do |t| %>
 											<tr>
-												<td><%= link_to title(t.athread_id)  ,thread_path(:id => t.athread_id) %></td>
-												
-												<td><%= link_to postby(t.athread_id), profile_path(:id=> threadowner(t.athread_id)) %></td>
+												<td class="no-deco"><%= link_to title(t.athread_id)  ,thread_path(:id => t.athread_id) %></td>
+												<td class="no-deco"><%= link_to postby(t.athread_id), profile_path(:id=> threadowner(t.athread_id)) %></td>
 												<td><%= threadpost(t.athread_id) %></td>
 												<td><%= threadview(t.athread_id) %></td>
-										
-												
 												<td># rept</td>
+												<td class="no-deco">unfollow</td>
 											</tr>
-									
 										<% end %>
-									<% else %>
-										<tr><td>No threads following</td>
-										 </tr>
 									<% end %>
 
 								</table>
@@ -51,30 +39,31 @@
 						</div>
 						<br>
 						<div class="section-inner">
-							<div class="section-title">Users Following</div>
+							<div class="section-title">Users</div>
 								<table class="table-inner">
-									<tr>
+									<tr class="follow-user">
 										<td class="table-name">Users</td>
-										<td class="table-auth">Member since</td>
+										<td class="table-date">Member since</td>
 										<td class="table-rept">Reputation</td>
+										<td class="table-unf">Unfollow</td>
 									</tr>
 									<% if !@followu.nil? %>
 										<% @followu.each do |r| %>
 											<tr>
-												<td><%= link_to author(r.second_user_id)  ,profile_path(:id => r.second_user_id) %></td>
-												<td><%=membersince(r.second_user_id) %></td>
+												<td class="no-deco"><%= link_to author(r.second_user_id)  ,profile_path(:id => r.second_user_id) %></td>
+												<td><%= membersince(r.second_user_id) %></td>
 												<td><%= xp(r.second_user_id) %></td>
+												<td class="no-deco">unfollow</td>
 											</tr>
 										<% end %>
-									<% else %>
-										<tr><td>No threads following</td> </tr>
 									<% end %>
 								</table>
 							</div>
 						</div>
 						<br>
+						<p class="error">option to unfollow?</p>
 					</div>
-				</div>
+				</div>				
 			</div>
 		</div>
 	</body>
