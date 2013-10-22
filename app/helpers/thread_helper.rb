@@ -6,8 +6,8 @@ module ThreadHelper
   end
   
 
-  def not_following?(u_id, second_u_id)
-    @following = FollowThread.where(user_id: @u_id, athread_id: second_u_id)
+  def not_following?(u_id, thread_id)
+    @following = FollowThread.where(user_id: @u_id, athread_id: thread_id)
 	if @following.empty?
 	  true
 	else 
