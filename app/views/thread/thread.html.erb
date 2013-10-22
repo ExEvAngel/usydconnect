@@ -49,15 +49,17 @@
 							</table>
 						<% end %> 
 					</div>
-					<br>
-					<br>
 					
-					<%= form_tag('/thread/submitc', method: 'post') do %>
-						<%= hidden_field_tag "at_id", params[:id] %>
-						<%= text_area_tag(:body, "", placeholder: "", class: "text-area-small", maxlength: 500) %>
+					<% if is_logged_in? %>
 						<br>
 						<br>
-						<%= submit_tag("Add Comment", class: "button") %>
+						<%= form_tag('/thread/submitc', method: 'post') do %>
+							<%= hidden_field_tag "at_id", params[:id] %>
+							<%= text_area_tag(:body, "", placeholder: "", class: "text-area-small", maxlength: 500) %>
+							<br>
+							<br>
+							<%= submit_tag("Add Comment", class: "button") %>
+						<% end %>
 					<% end %>
 
 				</div>
