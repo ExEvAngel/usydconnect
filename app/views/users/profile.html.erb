@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html>
 	<%# Generate title. %>
-	<% provide(:title, 'View Profile: @username') %>
+	<% provide(:title, 'Profile') %>
 
 	<body>
 		<div class="content-outer">
 			<div class="content-inner">
 				<br>
-				<div class="nav-left">
-					<div class="nav-left-details">
-						<h3><%= @name %></h3>
-						<div class="italic">
-							<p>Join Date</p>
-							<p><%=@email%></p>
+				<div class="profile">
+					<div class="nav-left">
+						<div class="nav-left-details">
+							<h3><%= @name %></h3>
+							<br>
+							<div class="italic">
+								<p class="error">join date not working<%= @member_since %></p>
+								<p><%= @email %></p>
+							</div>
+
+							<%#= gotta make action
+							link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
+							<p class="error"> need a mechanism to check if profile is own, and therefore if email and password are revealed </p>
+							
+								<% if true %>
+									<button class="button"> Change Password </button>
+								<% else %>
+									<% if is_logged_in? %>
+										<% if not_already_following?(@u_id, params[:id]) %>
+										<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+										<% else %>
+										<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
+										<% end %>
+									<% end %>
+								<% end %>
+							
+
+
+						<br>
+							
+							<p class="error">either you can see the follow button, or you can see the change password button.</p>
+
 						</div>
-
-						<%#= gotta make action
-						link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
-
-
-						<button class="button"> Change Password </button>
-						<% if is_logged_in? %>
-
-						<% if not_already_following?(@u_id, params[:id]) %>
-							<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-							<% else %>
-							<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
-							<% end %>
-					<% end %>
-						
-						either you can see the follow button, or you can see the change password button.
-
-					</div>
-		
-					<br>
-					<div class="nav-left-stats">
-						<table>
-							<tr>
-								<td class="strong">Questions:</td>
-								<td>2</td>
-								<%-# <%= @postcount??? -%>
-							</tr>
-							<tr>
-								<td class="strong">Answers:</td>
-								<td>1</td>
-								<%-# <%= @answercount??? -%>
-							</tr>
-							<tr>
-								<td class="strong">Total XP:</td>
-								<td><%= @xp %></td>
-								<%-#!--- .... -%>
-							</tr>
-						</table>
-					</div>
-				</div>
-
-
-
-				<div class="content-right">
-					<div data-role="page" data-url="<%= request.path %>" id ="details">
-						<div class="links" data-role="controlgroup" data-type="horizontal">
-							<%= link_to "My Activity", "#myactivity", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
-							<%= link_to "About Me", "#aboutme", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
-							<%= link_to "Messages", "#messages", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
-							<%= link_to "Preferences", "#preferences", { "class" => "button", "data-role" => "button", "data-prefetch" => "true", "data-inline" => "true" } %> 
+			
+						<br>
+						<div class="nav-left-stats">
+							<table>
+								<tr>
+									<td class="strong">Questions:</td>
+									<td>2</td>
+									<%-# <%= @postcount??? -%>
+								</tr>
+								<tr>
+									<td class="strong">Answers:</td>
+									<td>1</td>
+									<%-# <%= @answercount??? -%>
+								</tr>
+								<tr>
+									<td class="strong">Total XP:</td>
+									<td><%= @xp %></td>
+									<%-#!--- .... -%>
+								</tr>
+							</table>
 						</div>
 					</div>
-					<br>
-					stuff displayed here dynamically
-				</div>
+					&nbsp&nbsp
+					<div class="achievements">
+						achievements
+						<p class="error"> title needs fixing, is not displaying name correctly </p>
 
-		
+					</div>
+
+
+
+				</div>
 			</div>
 		</div>
 	</body>
