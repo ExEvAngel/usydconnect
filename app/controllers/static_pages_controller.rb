@@ -4,8 +4,11 @@ class StaticPagesController < ApplicationController
   def create
 	if valid_login(params[:username], params[:password])
 	  create_cookies(params[:username], params[:password])
-	end
     redirect_to root_path
+  else 
+    redirect_to root_path, notice: 'Invalid login or password!'
+	end
+    
   end
   
   def destroy

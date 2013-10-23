@@ -7,6 +7,8 @@
 		<div class="content-outer">
 			<div class="content-inner">
 				<h2>Sign Up</h2>
+
+
 				<%= form_tag('/new', method: 'post') do %>
 					<table class="indent">
 						<tr>
@@ -29,6 +31,9 @@
 					<%= submit_tag("Sign Up", class: "button")%>
 				<% end %>
 				<p class="error">
+					<% if flash[:notice] %>
+				    <div class="notice"><%= flash[:notice] %></div>
+				  <% end %>
 					Add realtime checking if name is available.<br>
 					A new input field for verification appears when user clicks "Sign Up".<br>Add a function to randomly generate a verification code and email it to the user's email address.<br>Add a function to check if the verification code entered by the user matches.<br>
 					This page should not be visible to users already logged in.

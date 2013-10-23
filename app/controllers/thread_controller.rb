@@ -17,6 +17,8 @@ class ThreadController < ApplicationController
 	if !@draft[0].nil?
 	  @draft[0].destroy
 	end
+
+
 	
 	if params[:commit].eql? "Save"
 	  @draft = DraftThread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :saved_at => Time.now)
@@ -26,18 +28,22 @@ class ThreadController < ApplicationController
         redirect_to thread_new_path
       end
 	else
-	  @thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
-	  @follow = FollowThread.new(:user_id => @u_id, :athread_id => @thread.id)
-	  if @thread.save && @follow.save 
-	    # xp increase for creating thread
-  	    @user = User.where(id: @u_id)
-  	    xp = @user[0].xp
-        @user[0].xp = xp + 5
-  	    @user[0].save
-        redirect_to thread_path(:id => @thread.id)
-      else
-        redirect_to thread_new_path
-      end
+		if params[:title].blank? || params[:body].blank?
+		redirect_to thread_new_path, notice: 'Please fill in the Title and Text body'
+		else
+			  @thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
+			  @follow = FollowThread.new(:user_id => @u_id, :athread_id => @thread.id)
+			  if @thread.save && @follow.save 
+			    # xp increase for creating thread
+		  	    @user = User.where(id: @u_id)
+		  	    xp = @user[0].xp
+		        @user[0].xp = xp + 5
+		  	    @user[0].save
+		        redirect_to thread_path(:id => @thread.id)
+		      else
+		        redirect_to thread_new_path
+		      end
+		end
 	end
   end
   
@@ -63,18 +69,24 @@ class ThreadController < ApplicationController
 
   def createcomments
 	redirect_to root_path unless is_logged_in?
-	@comment = Comment.new(:athread_id => params[:at_id], :body => params[:body], :user_id => @u_id, :date => Time.now)
 
-	if @comment.save
-	  # xp increase for creating thread
-	  @user = User.where(id: @u_id)
-	  xp = @user[0].xp
-      @user[0].xp = xp + 5
-	  @user[0].save
-    redirect_to thread_path(:id =>params[:at_id])
-    else
-      redirect_to root_path
-    end
+
+	if !params[:body].blank?
+		@comment = Comment.new(:athread_id => params[:at_id], :body => params[:body], :user_id => @u_id, :date => Time.now)
+
+		if @comment.save
+		  # xp increase for creating thread
+		  @user = User.where(id: @u_id)
+		  xp = @user[0].xp
+	      @user[0].xp = xp + 5
+		  @user[0].save
+	    redirect_to thread_path(:id =>params[:at_id])
+	    else
+	      redirect_to root_path
+	    end
+	else
+		redirect_to thread_path(:id =>params[:at_id])
+	end
   end
 
   def unfollow

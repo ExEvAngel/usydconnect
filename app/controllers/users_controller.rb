@@ -2,12 +2,26 @@ class UsersController < ApplicationController
 	before_action :get_username
 
 	def create
-		@user = User.new(:username => params[:username], :email => params[:email], :password => params[:password], :member_since => Time.now)
-		if @user.save
-			create_cookies(params[:username], params[:password])
-			redirect_to root_path
+		if params[:username].blank? || params[:username].blank? || params[:email].blank?  || params[:password].blank?
+		redirect_to signup_path, notice: 'Please fill in all the required fields'
 		else
-			redirect_to signup_path
+		
+			if !User.exists?(username: params[:username])
+				
+				if !User.exists?(email: params[:email])
+					@user = User.new(:username => params[:username], :email => params[:email], :password => params[:password], :member_since => Time.now)
+					if @user.save
+						create_cookies(params[:username], params[:password])
+						redirect_to root_path
+					else
+						redirect_to signup_path
+					end
+				else
+					redirect_to signup_path, notice: 'registration is limited per 1 student email acount'
+				end
+			else
+				redirect_to signup_path, notice: 'Username is taken'
+			end
 		end
 	end
 
