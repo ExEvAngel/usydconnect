@@ -90,42 +90,39 @@
 								<% @comments.find_in_batches(batch_size: 3) do |group| %>
 									<% group.each do |c| %>
 										<tr>
-											<td><%= c.body %></td>
+											<td>
+												<%= c.body %>
+												<br><br>
+											</td>
 										</tr>
 										<tr>
-											<td>
-												<div class="thread-comments-footer">
-													<% if is_logged_in? %>
-														<% if not_liked?(@u_id, c.id, 'comment') %>
-															<div class="gap2"></div>
-															<div class="follow">
-																<%= button_to('like', thread_like_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-															</div>
-														<% else %>
-															<div class="gap1"></div>
-															<div class="follow">
-																<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-															</div>
-														<% end %>
-														
-														<% if not_flagged?(@u_id, c.id, 'comment') %>
-															<div class="gap2"></div>
-															<div class="follow">
-																<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-															</div>
-														<% else %>
-															<div class="gap1"></div>
-															<div class="follow">
-																<%= button_to('unflag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-															</div>
-														<% end %>
+											<td class="thread-comments-footer1">
+												<% if is_logged_in? %>
+													<% if not_liked?(@u_id, c.id, 'comment') %>
+															<%= button_to('like', thread_like_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+													<% else %>
+															<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
 													<% end %>
-													<div class="gap"></div>
-													<%= link_to author(c.user_id), profile_path(:id => c.user_id) %>
-													&nbsp&nbsp
-													<%= c.date %><br>
-													<%= comment_no_likes(c.id) %> Likes
-												</div>
+													
+													<% if not_flagged?(@u_id, c.id, 'comment') %>
+															<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+													<% else %>
+															<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+													<% end %>
+												<% end %>
+												<table class="thread-comments-footer2">
+													<tr>
+														<td>
+															<%= link_to author(c.user_id), profile_path(:id => c.user_id) %>
+														</td>
+														<td>
+															<%= c.date %><br>
+														</td>
+														<td>
+															<%= comment_no_likes(c.id) %> Likes
+														</td>
+													</tr>
+												</table>
 											</td>
 										</tr>
 										<tr>
