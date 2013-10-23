@@ -23,39 +23,41 @@
 					</div>
 					
 					<% if is_logged_in? %>
-						<% if not_following?(@u_id, params[:id]) %>
-							<div class="gap2"></div>
-							<div class="follow">
-								<%= button_to('Follow Thread', thread_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-							</div>
-						<% else %>
-							<div class="gap1"></div>
-							<div class="follow">
-								<%= button_to('Unfollow Thread', thread_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
-							</div>
-						<% end %>
-						<% if not_liked?(@u_id, params[:id], 'thread') %>
-							<div class="gap2"></div>
-							<div class="follow">
-								<%= button_to('like', thread_like_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
-							</div>
-						<% else %>
-							<div class="gap1"></div>
-							<div class="follow">
-								<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
-							</div>
-						<% end %>
-						
-						<% if not_flagged?(@u_id, params[:id], 'thread') %>
-							<div class="gap2"></div>
-							<div class="follow">
-								<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
-							</div>
-						<% else %>
-							<div class="gap1"></div>
-							<div class="follow">
-								<%= button_to('unflag', thread_flag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
-							</div>
+						<% if !is_threadowner?(params[:id]) %>
+							<% if not_following?(@u_id, params[:id]) %>
+								<div class="gap2"></div>
+								<div class="follow">
+									<%= button_to('Follow Thread', thread_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+								</div>
+							<% else %>
+								<div class="gap1"></div>
+								<div class="follow">
+									<%= button_to('Unfollow Thread', thread_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
+								</div>
+							<% end %>
+							<% if not_liked?(@u_id, params[:id], 'thread') %>
+								<div class="gap2"></div>
+								<div class="follow">
+									<%= button_to('like', thread_like_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+								</div>
+							<% else %>
+								<div class="gap1"></div>
+								<div class="follow">
+									<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+								</div>
+							<% end %>
+							
+							<% if not_flagged?(@u_id, params[:id], 'thread') %>
+								<div class="gap2"></div>
+								<div class="follow">
+									<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+								</div>
+							<% else %>
+								<div class="gap1"></div>
+								<div class="follow">
+									<%= button_to('unflag', thread_flag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+								</div>
+							<% end %>
 						<% end %>
 					<% end %>
 				</div>

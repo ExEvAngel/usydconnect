@@ -36,5 +36,20 @@ module ThreadHelper
   def comment_no_likes(c_id)
     @likes = Like.where(apost_id: c_id, apost_type: 'comment').count
   end
+
+  def is_threadowner?(thread_id)
+  	username = cookies.signed[:username]
+  	user = User.where(username: username)
+  	userid = user[0].id
+
+  	thread = Athread.where(id: thread_id)
+  	uid =thread[0].user_id
+
+  	if userid == uid
+  		true
+  	else
+      false
+  	end
+  end
   
 end
