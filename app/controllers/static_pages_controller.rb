@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   before_action :get_username
-  
+  before_filter :authorize, :only => [:follow]
+
   def create
 	if valid_login(params[:username], params[:password])
 	  create_cookies(params[:username], params[:password])
@@ -36,6 +37,7 @@ class StaticPagesController < ApplicationController
   end
 
   def follow
+    
     @followu = FollowUser.where(user_id: @u_id)
     @followt = FollowThread.where(user_id: @u_id)
 
@@ -48,5 +50,11 @@ class StaticPagesController < ApplicationController
 		    @u_id = User.get_user_id(@username)
 	      end
 		end
+
+  def authorize
+     unless is_logged_in?
+    redirect_to root_path
+  end
+end
 		
 end
