@@ -11,17 +11,16 @@
 					<%= form_tag('/thread/submit', method: 'post') do %>
 						<div class="description">
 							<p class="strong">&nbsp&nbsp*Title:</p>
-							<%= text_field_tag(:title, "", placeholder: "title", class: "text-field", maxlength: 100) %>
+							<%= text_field_tag(:title, @title, placeholder: "title", class: "text-field", maxlength: 100) %>
 							
 							<p class="strong">&nbsp&nbspAdditional Tags:</p>
-							<%= text_field_tag(:unitcode, "", placeholder: 
-							"tags", class: "text-field", maxlength: 100) %>	
+							<%= text_field_tag(:unitcode, "", placeholder: "tags", class: "text-field", maxlength: 100) %>	
 
 							<br>
 							<br>
 						</div>
 
-						<%= text_area_tag(:body, "", placeholder: "", class: "text-area", maxlength: 1000) %>
+						<%= text_area_tag(:body, @body, placeholder: "", class: "text-area", maxlength: 1000) %>
 						<br>
 						<br>
 						<%= submit_tag("Create", class: "button") %>

@@ -3,23 +3,42 @@ class ThreadController < ApplicationController
 
   def new
 	redirect_to root_path unless is_logged_in?
-	
+	@draft = DraftThread.where(:user_id => @u_id)
+	if !@draft[0].nil?
+	  @title = @draft[0].title
+	  @body = @draft[0].body
+	end
   end
   
   def create
 	redirect_to root_path unless is_logged_in?
-	@thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
-	@follow = FollowThread.new(:user_id => @u_id, :athread_id => @thread.id)
-	if @thread.save && @follow.save
-	  # xp increase for creating thread
-	  @user = User.where(id: @u_id)
-	  xp = @user[0].xp
-      @user[0].xp = xp + 5
-	  @user[0].save
-      redirect_to thread_path(:id => @thread.id)
-    else
-      redirect_to root_path
-    end
+	
+	@draft = DraftThread.where(:user_id => @u_id)
+	if !@draft[0].nil?
+	  @draft[0].destroy
+	end
+	
+	if params[:commit].eql? "Save"
+	  @draft = DraftThread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :saved_at => Time.now)
+	  if @draft.save
+        redirect_to root_path
+      else
+        redirect_to thread_new_path
+      end
+	else
+	  @thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
+	  @follow = FollowThread.new(:user_id => @u_id, :athread_id => @thread.id)
+	  if @thread.save && @follow.save 
+	    # xp increase for creating thread
+  	    @user = User.where(id: @u_id)
+  	    xp = @user[0].xp
+        @user[0].xp = xp + 5
+  	    @user[0].save
+        redirect_to thread_path(:id => @thread.id)
+      else
+        redirect_to thread_new_path
+      end
+	end
   end
   
   def thread
