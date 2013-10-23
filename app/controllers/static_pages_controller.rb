@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
   end
   
   def destroy
-  	cookies.delete(:remember_token)
+  	sign_out
   	redirect_to root_path
   end
   
