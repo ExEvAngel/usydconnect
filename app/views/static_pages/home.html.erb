@@ -10,21 +10,14 @@
 				<table class="center">
 					<%= form_tag('/results', method: 'get') do %>
 						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
-						<!-- <td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') %></td> -->
+						<%# <td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') </td> %>
 						<td><%= submit_tag("Search", class: "button") %></td>
 					<% end %>
 				</table>
 
-
-				<h2 class="error">Tasks to do:</h2>
-				<p class="error">
-					Make the tabs change color so that the current tab is highlighted.<br>
-					reputation = xp of the author of a thread. needs to be implemented <br>
-					thread views not working. it can be incremented either when clicking the link, or when doc_ready, fully loaded<br>
-				</p>
-					<% if flash[:notice] %>
-				    <div class="notice"><%= flash[:notice] %></div>
-				  <% end %>
+				<% if flash[:notice] %>
+					<div class="notice"><%= flash[:notice] %></div>
+				<% end %>
 
 				<p>
 					This is the link to tutorials: 

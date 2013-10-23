@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
             presence: true, 
             format: { with: VALID_EMAIL_REGEX }
 
-  
   def self.get_user_id(user)
     @user = User.where(username: user)
     @user[0].id
