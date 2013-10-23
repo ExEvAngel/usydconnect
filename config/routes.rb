@@ -10,6 +10,10 @@ Usydconnect::Application.routes.draw do
   match("/signout", to: "static_pages#destroy", via: "delete")
   match("/results", to: "static_pages#results", via: "get")
   match("/follow", to: "static_pages#follow", via: "get")
+  match("/follow/uft", to: "static_pages#uft", via: "post")
+  match("/follow/ft", to: "static_pages#ft", via: "post")
+  match("/follow/ufu", to: "static_pages#ufu", via: "post")
+  match("/follow/fu", to: "static_pages#fu", via: "post")
   
   match("/user/follow", to: "users#follow", via: "post")
   match("/user/unfollow", to: "users#unfollow", via: "post")
@@ -28,6 +32,7 @@ Usydconnect::Application.routes.draw do
   match("/thread/flag", to: "thread#flag", via: "post")
   match("/thread/unflag", to: "thread#unflag", via: "post")
   match("/thread/close", to: "thread#close", via: "post")
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

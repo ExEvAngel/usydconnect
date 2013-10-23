@@ -39,6 +39,35 @@ module StaticPagesHelper
   	thread = Athread.where(id: athread_id)
     by = thread[0].views
   end
+  def threadrep(athread_id)
+    thread = Athread.where(id: athread_id)
+    uid =thread[0].user_id
+    user = User.where(id: uid )
+    by = user[0].xp
+  end
 
+  def not_already_following?(u_id, second_u_id)
+    @following = FollowUser.where(user_id: @u_id, second_user_id: second_u_id)
+  if @following.empty?
+    true
+  else 
+    false
+  end
+  end
+
+  def is_threadowner?(thread_id)
+    username = cookies.signed[:username]
+    user = User.where(username: username)
+    userid = user[0].id
+
+    thread = Athread.where(id: thread_id)
+    uid =thread[0].user_id
+
+    if userid == uid
+      true
+    else
+      false
+    end
+  end
 
 end

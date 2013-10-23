@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
   end
   
   def destroy
-  	sign_out
+  	cookies.delete(:remember_token)
   	redirect_to root_path
   end
   
@@ -23,6 +23,7 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+
 
   def about
   end
@@ -40,8 +41,40 @@ class StaticPagesController < ApplicationController
     
     @followu = FollowUser.where(user_id: @u_id)
     @followt = FollowThread.where(user_id: @u_id)
-
   end 
+
+  def ft
+      @follow = FollowThread.new(:user_id => @u_id, :athread_id => params[:id])
+  if @follow.save
+    redirect_to follow_path
+  end
+  end
+
+  def uft
+     @follow = FollowThread.where(user_id: @u_id, athread_id: params[:id])
+    if @follow[0].destroy
+      redirect_to follow_path
+    end
+  end
+
+  def fu
+    @follow = FollowUser.new(:user_id => @u_id, :second_user_id => params[:id])
+    if @follow.save
+      redirect_to follow_path
+    end
+    @follow = FollowUser.where(user_id: @u_id, second_user_id: params[:id])
+    if @follow[0].destroy
+      redirect_to follow_path
+    end
+  end
+
+  def ufu
+    
+    @follow = FollowUser.where(user_id: @u_id, second_user_id: params[:id])
+    if @follow[0].destroy
+      redirect_to follow_path
+    end
+  end
   
   	private
 		def get_username
