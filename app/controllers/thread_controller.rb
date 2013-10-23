@@ -9,7 +9,8 @@ class ThreadController < ApplicationController
   def create
 	redirect_to root_path unless is_logged_in?
 	@thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
-	if @thread.save
+	@follow = FollowThread.new(:user_id => @u_id, :athread_id => @thread.id)
+	if @thread.save && @follow.save
 	  # xp increase for creating thread
 	  @user = User.where(id: @u_id)
 	  xp = @user[0].xp
@@ -29,6 +30,10 @@ class ThreadController < ApplicationController
 	@time = @thread[0].Date
 	@user = User.joins(:athread).where(id: @thread[0].user_id)
 	@by = @user[0].username
+	views = @thread[0].increment(:views)
+	views.save
+	@views = @thread[0].views
+	@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
   end
   
   def destroy
@@ -37,7 +42,7 @@ class ThreadController < ApplicationController
   end
 
 
-def createcomments
+  def createcomments
 	redirect_to root_path unless is_logged_in?
 	@comment = Comment.new(:athread_id => params[:at_id], :body => params[:body], :user_id => @u_id, :date => Time.now)
 
@@ -63,6 +68,34 @@ def createcomments
   def follow
     @follow = FollowThread.new(:user_id => @u_id, :athread_id => params[:id])
 	if @follow.save
+		redirect_to thread_path(:id => params[:id])
+	end
+  end
+  
+  def unlike
+    @like = Like.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
+	if @like[0].destroy
+		redirect_to thread_path(:id => params[:id])
+	end
+  end
+  
+  def like
+    @like = Like.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
+	if @like.save
+		redirect_to thread_path(:id => params[:id])
+	end
+  end
+  
+  def unflag
+    @flag = Flag.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
+	if @flag[0].destroy
+		redirect_to thread_path(:id => params[:id])
+	end
+  end
+  
+  def flag
+    @flag = Flag.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
+	if @flag.save
 		redirect_to thread_path(:id => params[:id])
 	end
   end

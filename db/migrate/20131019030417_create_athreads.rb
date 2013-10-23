@@ -7,7 +7,7 @@ class CreateAthreads < ActiveRecord::Migration
       t.boolean :is_closed, :default => false
       t.integer :no_flags, :default => 0
       t.integer :views, :default => 0
-      t.datetime :Date, :default => Time.now
+      t.datetime :Date
 	
       t.timestamps
     end

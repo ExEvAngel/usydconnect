@@ -14,4 +14,27 @@ module ThreadHelper
 	  false
 	end
   end
+  
+  def not_liked?(u_id, post_id, type)
+    @liked = Like.where(user_id: @u_id, apost_id: post_id, apost_type: type)
+	if @liked.empty?
+	  true
+	else 
+	  false
+	end
+  end
+  
+  def not_flagged?(u_id, post_id, type)
+    @flagged = Flag.where(user_id: @u_id, apost_id: post_id, apost_type: type)
+	if @flagged.empty?
+	  true
+	else 
+	  false
+	end
+  end
+  
+  def comment_no_likes(c_id)
+    @likes = Like.where(apost_id: c_id, apost_type: 'comment').count
+  end
+  
 end

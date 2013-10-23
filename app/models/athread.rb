@@ -6,4 +6,6 @@ class Athread < ActiveRecord::Base
   has_many :tag, :through => :thread_tag
   has_many :follow_thread
   has_many :thread_follower_user, class_name: 'User' , :through => :follow_thread
+  has_many :like, :as => :apost
+  has_many :flag, :as => :apost
 end

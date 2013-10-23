@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :comment
   has_one :moderator
   has_one :draft_thread
+  has_many :like
+  has_many :flag
   
  validates :username, uniqueness: { case_sensitive: false },
             presence: true, 

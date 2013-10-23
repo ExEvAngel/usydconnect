@@ -6,7 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :body, :limit => 500, :null => false
       t.integer :no_flags, :default => 0
       t.integer :views, :default => 0
-      t.datetime :date, :default => Time.now
+      t.datetime :date
 	  
       t.timestamps
     end
