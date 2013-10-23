@@ -676,40 +676,41 @@ li
 	resize: none;
 }
 
+.thread-gap1
+{
+	height: 8px;
+}
+
+.thread-gap2
+{
+	height: 20px;
+}
+
+.inline
+{
+	display: inline;
+}
+
 .thread-header
 {
-	padding-top: 8px;
+	display: inline;
 
-	display: table;
-}
-
-.thread-header .in
-{
-	display: table-cell;
-
-	vertical-align: top;
-
-	min-width: 640px;
-	max-width: 640px;
-}
-
-.thread-header .out
-{
-	display: table-cell;
-
-	vertical-align: top;
-
-	min-width: 764px;
-	max-width: 764px;
+	float: right;
 }
 
 .thread-details
 {
-	display: table-cell;
+	padding: 0;
+	margin: 0;
+
+	padding-left: 8px;
+	padding-right: 8px;
 
 	font-family: "Trebuchet MS";
 	font-size: 14px;
 	color: black;
+
+	text-align: right;
 }
 
 .thread-details a
@@ -717,16 +718,6 @@ li
 	text-decoration: none;
 
 	font-weight: bold;
-}
-
-.thread-header .gap1
-{
-	width: 15px;
-}
-
-.thread-header .gap2
-{
-	width: 30px;
 }
 
 .thread-header .follow
