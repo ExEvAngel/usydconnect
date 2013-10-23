@@ -27,6 +27,8 @@ Usydconnect::Application.routes.draw do
   match("/thread/unlike", to: "thread#unlike", via: "post")
   match("/thread/flag", to: "thread#flag", via: "post")
   match("/thread/unflag", to: "thread#unflag", via: "post")
+  match("/thread/close", to: "thread#close", via: "post")
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

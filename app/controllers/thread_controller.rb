@@ -58,7 +58,17 @@ class ThreadController < ApplicationController
 	views = @thread[0].increment(:views)
 	views.save
 	@views = @thread[0].views
+	@closed = @thread[0].is_closed
 	@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
+  end
+
+  def close
+  		@thread = Athread.where(id: params[:id])
+  		if !@thread[0].is_closed
+  		@thread[0].is_closed = true
+  		@thread[0].save
+  		end
+  		redirect_to thread_path(:id => @thread[0].id)
   end
   
   def destroy
