@@ -12,14 +12,11 @@ class ThreadController < ApplicationController
   
   def create
 	redirect_to root_path unless is_logged_in?
-	
 	@draft = DraftThread.where(:user_id => @u_id)
 	if !@draft[0].nil?
 	  @draft[0].destroy
 	end
 
-
-	
 	if params[:commit].eql? "Save"
 	  @draft = DraftThread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :saved_at => Time.now)
 	  if @draft.save
@@ -31,7 +28,7 @@ class ThreadController < ApplicationController
 		if params[:title].blank? || params[:body].blank?
 		redirect_to thread_new_path, notice: 'Please fill in the Title and Text body'
 		else
-			  @thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
+			  @thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :tag_id => params[:tag][:id], :unitcode_id => params[:unitcode][:id],:Date => Time.now)
 			  if @thread.save
 			    # xp increase for creating thread
 		  	    @user = User.where(id: @u_id)
@@ -59,6 +56,8 @@ class ThreadController < ApplicationController
 	@views = @thread[0].views
 	@closed = @thread[0].is_closed
 	@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
+	@tag = Tag.where(id: @thread[0].tag_id)
+	@unitcode = Unitcode.where(id: @thread[0].unitcode_id)
   end
 
   def close

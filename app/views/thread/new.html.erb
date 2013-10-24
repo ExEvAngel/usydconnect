@@ -14,8 +14,8 @@
 							<%= text_field_tag(:title, @title, placeholder: "title", class: "text-field", maxlength: 100) %>
 							
 							<p class="strong">&nbsp&nbspAdditional Tags:</p>
-							<%= options_from_collection_for_select(Tag.all, :id, :name) %>
-							<%= options_from_collection_for_select(Unitcode.all, :id, :name) %>
+							<%= collection_select(:tag, :id, Tag.all, :id, :name) %>
+							<%= collection_select(:unitcode, :id, Unitcode.all, :id, :name)%>
 
 							<br>
 							<br>
