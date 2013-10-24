@@ -34,7 +34,15 @@ class StaticPagesController < ApplicationController
   
   def results
   
-  @threads = Athread.all
+  if params[:tag][:id].empty?
+    params[:tag][:id] = nil
+  end
+  
+  if params[:unitcode][:id].empty?
+    params[:unitcode][:id] = nil
+  end
+  
+  @threads = Athread.search(params[:search], params[:tag][:id], params[:unitcode][:id], params[:thread][:posted_after])
   
   end
 
