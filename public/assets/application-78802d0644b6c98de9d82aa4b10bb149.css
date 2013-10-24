@@ -1,0 +1,875 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+.error
+{
+	font-weight: bold;
+	color: red;
+}
+
+.test
+{
+	background-color: red;
+}
+
+html, body
+{
+	margin: 0;
+	padding: 0;
+
+	height: 100%;
+
+	background-color: #D8D8D8;
+}
+
+header
+{
+	position: fixed;
+
+	max-height: 96px;
+	min-height: 96px;
+	width: 100%;
+
+	background-color: #151515;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#424242), to(#000000));
+	background: -webkit-linear-gradient(top, #000000, #424242);
+	background: -moz-linear-gradient(top, #000000, #424242);
+	background: -ms-linear-gradient(top, #000000, #424242);
+	background: -o-linear-gradient(top, #000000, #424242);
+}
+
+.header
+{
+	display: block;
+
+	margin: 0 auto;
+
+	width: 960px;
+}
+
+.sign-outer
+{
+	display: table;
+
+	float: right;
+	padding-top: 4px;
+	padding-right: 4px;
+}
+
+.sign-inner
+{
+	margin: 0; 
+
+	display: table-cell;
+
+	vertical-align: middle;
+
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.logo
+{
+	float:left;
+	padding-top: 6px;
+
+	width: 60px;
+}
+
+.name
+{
+	float:left;
+	padding-top: 16px;
+	padding-left: 8px;
+
+	text-decoration: none;
+	font-family: "Lucida Sans Unicode";
+	font-size: 28px;
+	color: #E6E6E6;
+}
+
+.text-field
+{
+	padding-left: 5px;
+
+	height: 18px;
+
+	border: 0px;
+	border-radius: 1px;
+
+	background-color: #BDBDBD;
+}
+
+.button
+{
+	padding: 0;
+	padding-left: 4px;
+	padding-right: 4px;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: white;
+
+	border: 0px;
+	border-radius: 4px;
+
+	background-color: #848484;
+}
+
+.button:hover
+{
+	background-color: #585858;
+}
+
+.username
+{
+	margin: 0;
+	padding-top: 0;
+
+	font-style: italic;
+	color: white;	
+}
+
+.navbar
+{
+	display: block;
+
+	margin: 68px auto;
+
+	width: 960px;
+}
+
+.tab
+{
+	margin: 0;
+	padding: 0;
+
+	display: table;
+
+	list-style: none;
+}
+
+.tab li
+{
+	display: table-cell;
+}
+
+.tab li a 
+{
+	display: block;
+
+	text-align: center;
+
+	padding: 0px 10px;
+	
+	width: 100px;
+
+	border-width: 1px 1px 0 1px;
+	border: solid;
+	border-radius: 2px;
+	border-color: #585858;
+
+	font-family: "Trebuchet MS";
+	font-size: 16px;
+	font-weight: bold;
+	color: #BDBDBD;
+
+	background-color: #585858;
+}
+
+.tab li a:hover
+{
+	border-color: #848484;
+	background-color: #848484;
+}
+
+.gap
+{
+	margin: 0;
+	padding: 0;
+
+	width: 448px;
+	height: 0;
+}
+
+.content-outer
+{
+	display: block;
+
+	margin: 0 auto;
+	padding-top: 92px;
+
+	/*max-height: 90%;*/
+	width: 958px;
+
+	border: 1px solid;
+	border-color: #F2F2F2;
+	border-radius: 4px;
+
+	background-color: #F2F2F2;	
+}
+
+.content-inner
+{
+	margin-top: 12px;
+	margin-bottom: 12px;
+	margin-left: 16px;
+	margin-right: 16px;
+	padding-bottom: 10px;
+}
+
+.container
+{
+	min-height: 94%;
+}
+
+footer
+{
+	margin: 0 auto;
+
+	height: 98%;
+	width: 958px;
+
+	display: block;
+
+	text-align: center;
+
+	border: 1px solid;
+	border-color: #F2F2F2;
+	border-width: 1px 1px 0 1px;
+	border-radius: 4px;
+
+	background-color: #F2F2F2;
+}
+
+.footer-container
+{
+	height: 4%;
+}
+
+.footer-inner
+{
+	padding-top: 12px;
+	padding-bottom: 8px;
+
+	text-decoration: none; 
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: #A4A4A4;
+}
+
+.footer-inner a
+{
+	text-decoration: none; 
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: #848484;
+}
+
+p
+{
+	text-decoration: none;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: black;
+}
+
+h1, h2, h3
+{
+	border: none;
+	outline: none;
+}
+
+h2
+{
+	padding-left: 4px;
+
+	text-decoration: none;
+
+	font-family: "Lucida Sans Unicode";
+	font-size: 24px;
+	color: #2E2E2E;
+}
+
+h3
+{
+	padding-left: 2px;
+
+	text-decoration: none;
+
+	font-family: "Lucida Sans Unicode";
+	font-size: 16px;
+	color: #2E2E2E;
+}
+
+h4
+{
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+}
+
+li
+{
+	text-decoration: none;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: black;
+}
+
+.search-field
+{	
+	padding-left: 5px;
+
+	height: 18px;
+	width: 160px;
+
+	border: 0px;
+	border-radius: 1px;
+
+	background-color: #BDBDBD;
+}
+
+.dropdown
+{
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 4px;
+	height: 14px;
+}
+
+.section-inner
+{
+	border: 1px solid;
+	border-radius: 2px;
+	border-color: #BDBDBD;
+
+	background-color: #E6E6E6;
+}
+
+.section-inner-alt
+{
+	margin-left: 6px;
+	margin-right: 6px;
+
+	border: 1px solid;
+	border-radius: 2px;
+	border-color: #BDBDBD;
+
+	background-color: #E6E6E6;
+}
+
+.section-title
+{
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 8px;
+	padding-right: 8px;
+
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-weight: bold;
+
+	border-bottom: 1px solid;
+	border-color: #BDBDBD;
+
+	background-color: #D8D8D8;
+}
+
+.table-inner 
+{
+	border:none;
+	border-collapse: collapse;
+
+	text-decoration: none;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: black;
+}
+
+.table-inner td
+{
+	border-left: 1px solid #D8D8D8;
+	border-right: 1px solid #D8D8D8;
+
+	padding-left: 2px;
+}
+
+.table-inner td:first-child
+{
+	border-left: none;
+}
+
+.table-inner td:last-child
+{
+	border-right: none;
+}
+
+.table-name
+{
+	width: 420px;
+
+	border-bottom: 1px solid #D8D8D8;
+
+	font-weight: bold;
+}
+
+.table-auth
+{
+	width: 160px;
+
+	border-bottom: 1px solid #D8D8D8;
+
+	font-weight: bold;
+}
+
+.table-date
+{
+	width: 160px;
+
+	border-bottom: 1px solid #D8D8D8;
+
+	font-weight: bold;
+}
+
+.table-view
+{
+	width: 80px;
+
+	border-bottom: 1px solid #D8D8D8;
+
+	font-weight: bold;
+}
+
+.table-rept
+{
+	width: 80px;
+
+	border-bottom: 1px solid #D8D8D8;
+
+	font-weight: bold;
+}
+
+.follow-thread .table-name
+{
+	width: 300px;
+}
+
+.follow-user .table-name
+{
+	width: 580px;
+}
+
+.no-deco a
+{
+	text-decoration: none;
+}
+
+.table-unf
+{
+	width: 80px;
+
+	border-bottom: 1px solid #D8D8D8;
+
+	font-weight: bold;
+}
+
+.category
+{
+	margin: 0;
+	padding: 8px;
+
+	list-style: none;
+}
+
+.scrollbox
+{
+	overflow: auto;
+
+	margin: 0 auto;
+	padding-left: 12px;
+	padding-right: 12px;
+
+	height: 480px;
+	width: 900px;
+
+	border: 1px solid #D8D8D8;
+}
+
+.profile
+{
+	display: table;
+
+	margin: 0 auto;
+}
+
+.nav-left
+{
+	display: table-cell;
+
+	padding-top: 0;
+	padding-bottom: 16px;
+	padding-left: 4px;
+	padding-right: 4px;
+	margin: 0;
+	
+	width: 240px;
+
+	border-radius: 2px;
+
+	background-color: #D8D8D8;
+}
+
+.nav-left .button
+{
+	margin: 0 auto;
+}
+
+.nav-left .button_to 
+{
+	margin: 0 auto;
+
+	width: 100px;
+}
+
+.nav-left-details
+{
+	text-align: center;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+}
+
+.nav-left-details h3
+{
+	margin: 0;
+	padding: 0;
+
+	padding-top: 10px;
+}
+
+.nav-left-details p
+{
+	margin: 0;
+	padding: 0;
+}
+
+.nav-left-stats
+{
+	margin: 0 auto;
+
+	width: 220px;
+
+	border-radius: 2px;
+
+	background-color: #BDBDBD;
+
+	text-decoration: none;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+}
+
+.nav-left-stats td
+{
+	padding-left: 6px;
+}
+
+.achievements
+{
+	display: table-cell;
+
+	padding-top: 0;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 4px;
+	margin: 0;
+	
+	width: 660px;
+
+	border-radius: 2px;
+
+	background-color: #D8D8D8;
+}
+
+.messagebody
+{
+	padding: 0 12px 12px 12px;
+
+	border: 1px solid #D8D8D8;
+	border-radius: 2px;
+
+	background-color: #E6E6E6;
+}
+
+.description
+{
+	display: inline;
+	text-decoration: none;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: black;
+}
+
+.description p
+{
+	display: inline-block;
+
+	width: 140px;
+}
+
+.description .text-field
+{
+	width: 720px;
+}
+
+.text-area
+{
+	margin: 0 auto;
+	padding: 10px 0px 10px 10px;
+
+	width: 888px;
+	height: 240px;
+
+	text-align: left;
+
+	font-family: "Trebuchet MS";
+
+	border-radius: 2px;
+	border-color: #D8D8D8;
+
+	background-color: #BDBDBD;
+
+	resize: none;
+}
+
+.text-area-small
+{
+	margin: 0 auto;
+	padding: 10px 0px 10px 10px;
+
+	width: 888px;
+	height: 80px;
+
+	text-align: left;
+
+	font-family: "Trebuchet MS";
+
+	border-radius: 2px;
+	border-color: #D8D8D8;
+
+	background-color: #BDBDBD;
+
+	resize: none;
+}
+
+.thread-gap1
+{
+	height: 8px;
+}
+
+.thread-gap2
+{
+	height: 20px;
+}
+
+.inline
+{
+	display: inline;
+}
+
+.thread-header
+{
+	display: inline;
+
+	float: right;
+}
+
+.thread-details
+{
+	padding: 0;
+	margin: 0;
+
+	padding-left: 8px;
+	padding-right: 8px;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: black;
+
+	text-align: right;
+}
+
+.thread-details a
+{
+	text-decoration: none;
+
+	font-weight: bold;
+}
+
+.thread-header .follow
+{
+	display: table-cell;
+
+	vertical-align: middle;
+}
+
+.thread-content
+{
+	padding: 0 12px 12px 12px;
+
+	border: 1px solid #D8D8D8;
+	border-radius: 2px;
+
+	background-color: #E6E6E6;
+}
+
+.thick
+{
+	height: 3px;
+
+	border: none;
+
+	color: #D8D8D8;
+	background-color: #D8D8D8;
+}
+
+.thread-comments
+{
+	padding-left: 8px;
+}
+
+.thread-comments hr
+{
+	height: 1px;
+	width: 868px;
+
+	border: none;
+
+	color: #D8D8D8;
+	background-color: #D8D8D8;
+}
+
+.thread-comments-footer1 .button_to
+{
+	display: inline-block;
+}
+
+.thread-comments-footer2
+{
+	display: inline;
+
+	float: right;
+
+	font-size: 12px;
+}
+
+.thread-comments-footer2, .thread-comments-footer2 td, .thread-comments-footer2 th, .thread-comments-footer2 tr
+{
+	border: 0;
+	outline: none;
+}
+
+.thread-comments-footer a
+{
+	text-decoration: none;
+}
+
+.thread-content-footer .button_to
+{
+	display: inline-block;
+}
+
+
+
+
+
+
+
+label
+{
+	text-decoration: none;
+
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	color: black;
+}
+
+.margin
+{
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+.center
+{
+	margin: 0 auto;
+}
+
+.center-text
+{
+	text-align: center;
+}
+
+.indent
+{
+	padding-left: 12px;
+}
+
+.link
+{
+	text-decoration: none;
+}
+
+.strong
+{
+	font-weight: bold;
+}
+
+.italic
+{
+	font-style: italic;
+}
+
+::-webkit-input-placeholder
+{
+	font-style: italic;
+	color: #F2F2F2;
+}
+
+:-moz-placeholder
+{
+	font-style: italic;
+	color: #F2F2F2;
+}
+
+::-moz-placeholder
+{
+	font-style: italic;
+	color: #F2F2F2;
+}
+
+:-ms-input-placeholder
+{
+	font-style: italic;
+	color: #F2F2F2;
+}
