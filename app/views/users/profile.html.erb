@@ -30,7 +30,8 @@
 											<%= button_to('Unban User', user_unban_path(:id => params[:id]), :method => :post, class: "button") %>
 											<% end %>
 										<% end %>
-										<% if @uid == params[:id].to_i %>
+
+										<% if (@u_id.to_i) == (params[:id].to_i) %>
 											<%= button_to('Change password', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
 										<% else %>
 											<% if not_already_following?(@u_id, params[:id]) %>
@@ -45,7 +46,7 @@
 
 						<br>
 							
-							<p class="error">either you can see the follow button, or you can see the change password button.</p>
+							<p class="error"> either you can see the follow button, or you can see the change password button.</p>
 
 						</div>
 			
