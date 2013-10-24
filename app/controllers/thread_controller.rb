@@ -47,18 +47,22 @@ class ThreadController < ApplicationController
   end
   
   def thread
-	@thread = Athread.where(id: params[:id])
-	@comments = Comment.where(athread_id: params[:id])
-	@title = @thread[0].title
-	@body = @thread[0].body
-	@time = @thread[0].Date
-	@user = User.joins(:athread).where(id: @thread[0].user_id)
-	@by = @user[0].username
-	views = @thread[0].increment(:views)
-	views.save
-	@views = @thread[0].views
-	@closed = @thread[0].is_closed
-	@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
+  	if Athread.exists?(id: params[:id])
+		@thread = Athread.where(id: params[:id])
+		@comments = Comment.where(athread_id: params[:id])
+		@title = @thread[0].title
+		@body = @thread[0].body
+		@time = @thread[0].Date
+		@user = User.joins(:athread).where(id: @thread[0].user_id)
+		@by = @user[0].username
+		views = @thread[0].increment(:views)
+		views.save
+		@views = @thread[0].views
+		@closed = @thread[0].is_closed
+		@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
+	else
+		redirect_to root_path
+	end
   end
 
   def close

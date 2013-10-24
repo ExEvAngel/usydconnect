@@ -33,11 +33,15 @@ class UsersController < ApplicationController
 	end
 
 	def profile
-		@user = User.where(id: params[:id])
-		@name = @user[0].username
-		@member_since = @user[0].member_since
-		@email = @user[0].email
-		@xp = @user[0].xp
+		if User.exists?(id: params[:id])
+			@user = User.where(id: params[:id])
+			@name = @user[0].username
+			@member_since = @user[0].member_since
+			@email = @user[0].email
+			@xp = @user[0].xp
+		else
+			redirect_to root_path
+		end
 	end
 
 	def unfollow
