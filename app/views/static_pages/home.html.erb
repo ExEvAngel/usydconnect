@@ -35,20 +35,16 @@
 										<td class="table-view">Views</td>
 										<td class="table-rept">Reputation</td>
 									</tr>
-									<tr>
-										<td>thread name</td>
-										<td>author</td>
-										<td>13:20 11/4/13</td>
-										<td># views</td>
-										<td># rept</td>
-									</tr>
-									<tr>
-										<td>thread name</td>
-										<td>author</td>
-										<td>9:34 21/11/13</td>
-										<td># views</td>
-										<td># rept</td>
-									</tr>
+									<% @pinned.each do |p| %>
+										<tr>
+											<td><%= link_to p.title  ,thread_path(:id => p.id) %></td>
+											<td><%= link_to author(p.user_id), profile_path(:id=> p.user_id) %></td>
+											<td><%= p.Date.strftime("%R %d/%m/%y") %></td>
+											<td><%= p.views %></td>
+											<td># rept</td>
+										</tr>
+									
+									<% end %>
 								</table>
 							</div>
 						</div>

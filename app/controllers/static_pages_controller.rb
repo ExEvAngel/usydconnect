@@ -19,6 +19,7 @@ class StaticPagesController < ApplicationController
   
   def home
     @recent = Athread.last(3)
+	@pinned = Athread.first(2)
   end
 
   def help
