@@ -4,6 +4,8 @@ class Athread < ActiveRecord::Base
   has_many :comment, :through => :post
   has_many :thread_tag
   has_many :tag, :through => :thread_tag
+  has_many :thread_unitcode
+  has_many :unitcode, :through => :thread_unitcode
   has_many :follow_thread
   has_many :thread_follower_user, class_name: 'User' , :through => :follow_thread
   has_many :like, :as => :apost
