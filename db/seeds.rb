@@ -26,7 +26,7 @@ Unitcode.create([{name: 'General'}, {name: 'COMP'}, {name: 'ELEC'}, {name: 'INFO
  			Use a different browser to verify whether the problem persists', Date: Time.now)
 
  Comment.create(user_id: user.id, athread_id: thread.id, body: 'In the event that all these options fail, you may then notify one of the active moderators of the problem. 
- Please note that fixes may not be immediate and could require some time to find a solution if the problem is not localised to your machine.', Date: Time.now)
+ Please note that fixes may not be immediate and could require some time to find a solution if the problem is not localised to your machine.', date: Time.now)
 
 
 # Achievement Images
