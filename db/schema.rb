@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131024025204) do
 
   create_table "moderators", force: true do |t|
     t.integer  "user_id"
-    t.date     "moderator_since"
+    t.date     "moderator_since", default: '2013-10-20'
     t.datetime "created_at"
     t.datetime "updated_at"
   end

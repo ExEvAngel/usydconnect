@@ -231,7 +231,7 @@ header
 
 .container
 {
-	height: 96%;
+	min-height: 94%;
 }
 
 footer
@@ -525,7 +525,7 @@ li
 	display: table-cell;
 
 	padding-top: 0;
-	padding-bottom: 4px;
+	padding-bottom: 16px;
 	padding-left: 4px;
 	padding-right: 4px;
 	margin: 0;
@@ -575,7 +575,7 @@ li
 {
 	margin: 0 auto;
 
-	width: auto;
+	width: 220px;
 
 	border-radius: 2px;
 
@@ -587,13 +587,18 @@ li
 	font-size: 14px;
 }
 
+.nav-left-stats td
+{
+	padding-left: 6px;
+}
+
 .achievements
 {
 	display: table-cell;
 
 	padding-top: 0;
 	padding-bottom: 4px;
-	padding-left: 4px;
+	padding-left: 8px;
 	padding-right: 4px;
 	margin: 0;
 	

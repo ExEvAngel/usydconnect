@@ -11,34 +11,24 @@
 					<div class="nav-left">
 						<div class="nav-left-details">
 							<h3><%= @name %></h3>
-							<br>
 							<div class="italic">
-								<p class="error">join date not working<%= @member_since %></p>
+								<p><%= @member_since %></p>
 								<p><%= @email %></p>
 							</div>
-
+							<br>
 							<%#= gotta make action
 							link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
-							<p class="error"> need a mechanism to check if profile is own, and therefore if email and password are revealed </p>
-							
-								<% if @u_id == params[:id] %>
-									<button class="button"> Change Password </button>
-								<% else %>
-									<% if is_logged_in? %>
-										<% if not_already_following?(@u_id, params[:id]) %>
-										<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-										<% else %>
-										<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
-										<% end %>
+							<% if @u_id == params[:id] %>
+								<button class="button"> Change Password </button>
+							<% else %>
+								<% if is_logged_in? %>
+									<% if not_already_following?(@u_id, params[:id]) %>
+									<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+									<% else %>
+									<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
 									<% end %>
 								<% end %>
-							
-
-
-						<br>
-							
-							<p class="error">either you can see the follow button, or you can see the change password button.</p>
-
+							<% end %>
 						</div>
 			
 						<br>
@@ -46,26 +36,24 @@
 							<table>
 								<tr>
 									<td class="strong">Questions:</td>
-									<td>2</td>
+									<td class="error">0</td>
 									<%-# <%= @postcount??? -%>
 								</tr>
 								<tr>
 									<td class="strong">Answers:</td>
-									<td>1</td>
+									<td class="error">0</td>
 									<%-# <%= @answercount??? -%>
 								</tr>
 								<tr>
 									<td class="strong">Total XP:</td>
 									<td><%= @xp %></td>
-									<%-#!--- .... -%>
 								</tr>
 							</table>
 						</div>
 					</div>
-					&nbsp&nbsp
+					&nbsp&nbsp&nbsp
 					<div class="achievements">
 						achievements
-						<p class="error"> title needs fixing, is not displaying name correctly </p>
 					</div>
 				</div>
 				<br>
