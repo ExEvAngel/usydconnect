@@ -125,6 +125,17 @@ class ThreadController < ApplicationController
   def unlike
     @like = Like.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @like[0].destroy
+		if params[:type].eql? "thread"
+			@thread = Athread.where(id: params[:post_id])
+			@user = User.where(id: @thread[0].id)
+			like = @user[0].decrement(:xp)
+			like.save
+		else
+			@comment = Comment.where(id: params[:post_id])
+			@user = User.where(id: @comment[0].id)
+			like = @user[0].decrement(:xp)
+			like.save
+		end
 		redirect_to thread_path(:id => params[:id], :action => "like")
 	end
   end
@@ -132,6 +143,17 @@ class ThreadController < ApplicationController
   def like
     @like = Like.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @like.save
+		if params[:type].eql? "thread"
+			@thread = Athread.where(id: params[:post_id])
+			@user = User.where(id: @thread[0].id)
+			like = @user[0].increment(:xp)
+			like.save
+		else
+			@comment = Comment.where(id: params[:post_id])
+			@user = User.where(id: @comment[0].id)
+			like = @user[0].increment(:xp)
+			like.save
+		end
 		redirect_to thread_path(:id => params[:id], :action => "like")
 	end
   end
