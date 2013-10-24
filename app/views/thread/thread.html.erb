@@ -8,10 +8,12 @@
 			<div class="content-inner">
 				<div class="thread-gap1"></div>
 				<h2 class="inline"><%= @title %></h2>
-
+				<div class="tag">
+					-&nbsp<%= @tag[0].name %>
+					-&nbsp<%= @unitcode[0].name %>
+				</div>
 				<table class="thread-header">
-					<%= @tag[0].name %>
-					<div class="treb"><%= @unitcode[0].name %></div>
+					
 
 					<tr>
 						<td>
