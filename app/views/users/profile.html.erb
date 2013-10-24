@@ -21,10 +21,9 @@
 							link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
 							<p class="error"> need a mechanism to check if profile is own, and therefore if email and password are revealed </p>
 									
-									
 									<% if is_logged_in? %>
 
-										<% if is_mod? && (@uid != params[:id].to_i) %>
+										<% if is_mod? && (@u_id != params[:id].to_i) %>
 											<% if !banned?(params[:id].to_i) %>
 											<%= button_to('Ban User', user_ban_path(:id => params[:id]), :method => :post, class: "button") %>
 											<% else %>
