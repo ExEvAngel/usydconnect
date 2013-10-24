@@ -33,6 +33,15 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def banned_user?(username)
+      if User.exists?(username: username)
+        user = User.where(:username => username)
+        result = user[0].is_banned
+      else
+        false
+      end
+    end
+
 	# Creates signed user cookies
 	def create_cookies(username, password)
 		cookies.signed[:username] = { 

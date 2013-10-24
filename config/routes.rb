@@ -17,6 +17,8 @@ Usydconnect::Application.routes.draw do
   
   match("/user/follow", to: "users#follow", via: "post")
   match("/user/unfollow", to: "users#unfollow", via: "post")
+  match("/user/ban", to: "users#ban", via: "post")
+  match("/user/unban", to: "users#unban", via: "post")
   match("/profile", to: "users#profile", via: "get")
   match("/new", to: "users#create", via: "post")
   match("/signup", to: "users#new", via: "get")

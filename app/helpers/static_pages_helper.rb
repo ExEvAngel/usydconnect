@@ -73,4 +73,20 @@ module StaticPagesHelper
       false
     end
   end
+
+  def is_mod?
+    username = cookies.signed[:username]
+    if User.exists?(username: username)
+      user = User.where(username: username)
+      userid = user[0].id
+      if Moderators.exists?(user_id: userid)
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
+
 end

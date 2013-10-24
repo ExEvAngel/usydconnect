@@ -4,8 +4,12 @@ class StaticPagesController < ApplicationController
 
   def create
 	if valid_login(params[:username], params[:password])
+    if !banned_user?(params[:username])
 	  create_cookies(params[:username], params[:password])
     redirect_to root_path
+    else
+      redirect_to root_path, notice: 'Banned User!'
+    end
   else 
     redirect_to root_path, notice: 'Invalid login or password!'
 	end

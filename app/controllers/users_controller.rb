@@ -58,6 +58,19 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def ban
+		@user = User.find(params[:id])
+		@user.update_attributes(:is_banned => true)
+		redirect_to profile_path(:id => params[:id])
+	end
+
+	def unban
+		user = User.find(params[:id])
+		user.update_attributes(:is_banned => false)
+		redirect_to profile_path(:id => params[:id])
+	end
+
+
 	def change_password
 		if params[:oldpassword].blank? || params[:newpassword].blank? || params[:verifypassword].blank?  
 		redirect_to signup_path, notice: 'Please fill in all the required fields'
