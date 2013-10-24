@@ -17,47 +17,59 @@
 								<p><%= @email %></p>
 							</div>
 
-							<%#= gotta make action
-							link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
-									
-									<% if is_logged_in? %>
-
-										<% if is_mod? && (@u_id != params[:id].to_i) %>
-											<% if !banned?(params[:id].to_i) %>
-											<%= button_to('Ban User', user_ban_path(:id => params[:id]), :method => :post, class: "button") %>
-											<% else %>
-											<%= button_to('Unban User', user_unban_path(:id => params[:id]), :method => :post, class: "button") %>
-											<% end %>
-										<% end %>
-
-										<% if (@u_id.to_i) == (params[:id].to_i) %>
-											<%= button_to('Change password', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-										<% else %>
-											<% if not_already_following?(@u_id, params[:id]) %>
-											<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-											<% else %>
-											<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
-											<% end %>
-										<% end %>
+							<% if is_logged_in? %>
+								<% if is_mod? && (@u_id != params[:id].to_i) %>
+									<% if !banned?(params[:id].to_i) %>
+									<%= button_to('Ban User', user_ban_path(:id => params[:id]), :method => :post, class: "button") %>
+									<% else %>
+									<%= button_to('Unban User', user_unban_path(:id => params[:id]), :method => :post, class: "button") %>
 									<% end %>
-							
-
-
-						<br>
-							
-							<p class="error"> either you can see the follow button, or you can see the change password button.</p>
-
+								<% end %>
+								<br>
+								<% if (@u_id.to_i) == (params[:id].to_i) %>
+									<div class="change_password">
+										<%= form_tag('/change_password', method: 'post') do %>
+											<p> Change Password: </p>
+											<table class="indent">
+												<%= hidden_field_tag "id", @u_id %>
+												<tr>
+													<td><%= label_tag :"Old" %>:</td>
+													<td><%= password_field_tag(:oldpassword, "", class: "text-field") %></td>
+												</tr>
+												<tr>
+													<td><%= label_tag :"New" %>:</td>
+													<td><%= password_field_tag(:newpassword, "", class: "text-field") %></td>
+												</tr>
+												<tr>
+													<td><%= label_tag :"Retype" %>:</td>
+													<td><%= password_field_tag(:verifypassword, "", class: "text-field") %></td>
+												</tr>
+											</table>
+											<%= submit_tag("Submit", class: "button")%>
+										<% end %>
+										<% if flash[:notice] %>
+											<div class="notice"><%= flash[:notice] %></div>
+										<% end %>
+									</div>
+								<% else %>
+									<% if not_already_following?(@u_id, params[:id]) %>
+									<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+									<% else %>
+									<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
+									<% end %>
+								<% end %>
+							<% end %>
 						</div>
-			
+						
 						<br>
 						<div class="nav-left-stats">
 							<table>
 								<tr>
-									<td class="strong">Questions:</td>
+									<td class="strong">Threads:</td>
 									<td><%= @postcount %></td>
 								</tr>
 								<tr>
-									<td class="strong">Answers:</td>
+									<td class="strong">Comments:</td>
 									<td><%= @answercount %></td>
 								</tr>
 								<tr>
@@ -69,35 +81,16 @@
 					</div>
 					&nbsp&nbsp
 					<div class="achievements">
-						achievements
-						<p class="error"> title needs fixing, is not displaying name correctly </p>
+						<h3>Achievements</h3>
+						if has > 0 threads
+						<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg">
+						
+						if has > 0 comments
+						<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg">
+
+						if has >= 100 XP
+						<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl10a.jpg">
 					</div>
-					<div class="change_password">
-						<%= form_tag('/change_password', method: 'post') do %>
-					<table class="indent">
-						<%= hidden_field_tag "id", @u_id %>
-						<tr>
-							<td><%= label_tag :"Old Password" %>:</td>
-							<td>&nbsp</td>
-							<td><%= password_field_tag :oldpassword %></td>
-						</tr>
-						<tr>
-							<td><%= label_tag :"New Password" %>:</td>
-							<td>&nbsp</td>
-							<td><%= password_field_tag :newpassword %></td>
-						</tr>
-						<tr>
-							<td><%= label_tag :"Retype Password" %>:</td>
-							<td>&nbsp</td>
-							<td><%= password_field_tag :verifypassword %></td>
-						</tr>
-					</table>
-					<p class="error">Add "Retype password" and function to check that passwords match.<br>Add checkbox: Agree with Terms and Conditions/ Policies.</p>
-					<%= submit_tag("Submit", class: "button")%>
-					<% end %>
-						<p class="error"><% if flash[:notice] %>
-				    <div class="notice"><%= flash[:notice] %></div>
-				  <% end %>
 				</div>
 				<br>
 			</div>
