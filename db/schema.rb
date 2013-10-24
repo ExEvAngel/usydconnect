@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20131024025204) do
 
   create_table "athreads", force: true do |t|
     t.integer  "user_id"
-    t.integer  "tag_id"
-    t.integer  "unitcode_id"
-    t.string   "title",       limit: 200,                  null: false
-    t.string   "body",        limit: 1000,                 null: false
-    t.boolean  "is_closed",                default: false
-    t.integer  "no_flags",                 default: 0
-    t.integer  "views",                    default: 0
-    t.datetime "Date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
