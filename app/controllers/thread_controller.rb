@@ -35,6 +35,8 @@ class ThreadController < ApplicationController
 		  	    xp = @user[0].xp
 		        @user[0].xp = xp + 5
 		  	    @user[0].save
+				no_thread = @user[0].increment(:no_thread)
+			    no_thread.save
 		        redirect_to thread_path(:id => @thread.id)
 		      else
 		        redirect_to thread_new_path
@@ -93,8 +95,10 @@ class ThreadController < ApplicationController
 		  # xp increase for creating thread
 		  @user = User.where(id: @u_id)
 		  xp = @user[0].xp
-	      @user[0].xp = xp + 5
+	      @user[0].xp = xp + 3
 		  @user[0].save
+		  no_comment = @user[0].increment(:no_comment)
+		  no_comment.save
 	    redirect_to thread_path(:id =>params[:at_id])
 	    else
 	      redirect_to root_path

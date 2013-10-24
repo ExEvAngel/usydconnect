@@ -13,13 +13,12 @@
 							<h3><%= @name %></h3>
 							<br>
 							<div class="italic">
-								<p class="error">join date not working<%= @member_since %></p>
+								<p>Member Since: <%= @member_since %></p>
 								<p><%= @email %></p>
 							</div>
 
 							<%#= gotta make action
 							link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
-							<p class="error"> need a mechanism to check if profile is own, and therefore if email and password are revealed </p>
 									
 									<% if is_logged_in? %>
 
@@ -55,18 +54,15 @@
 							<table>
 								<tr>
 									<td class="strong">Questions:</td>
-									<td>2</td>
-									<%-# <%= @postcount??? -%>
+									<td><%= @postcount %></td>
 								</tr>
 								<tr>
 									<td class="strong">Answers:</td>
-									<td>1</td>
-									<%-# <%= @answercount??? -%>
+									<td><%= @answercount %></td>
 								</tr>
 								<tr>
 									<td class="strong">Total XP:</td>
 									<td><%= @xp %></td>
-									<%-#!--- .... -%>
 								</tr>
 							</table>
 						</div>
