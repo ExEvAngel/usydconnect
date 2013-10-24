@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022224727) do
+ActiveRecord::Schema.define(version: 20131024025204) do
 
   create_table "achievements", force: true do |t|
     t.string   "name",       limit: 30,  null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131022224727) do
 
   create_table "moderators", force: true do |t|
     t.integer  "user_id"
-    t.date     "moderator_since", default: '2013-10-20'
+    t.date     "moderator_since"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,6 +111,13 @@ ActiveRecord::Schema.define(version: 20131022224727) do
     t.datetime "updated_at"
   end
 
+  create_table "thread_unitcodes", force: true do |t|
+    t.integer  "athread_id"
+    t.integer  "unitcode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "threads", force: true do |t|
     t.string   "title",      limit: 200
     t.string   "body",       limit: 500
@@ -118,6 +125,12 @@ ActiveRecord::Schema.define(version: 20131022224727) do
     t.integer  "no_flags",               default: 0
     t.integer  "views",                  default: 0
     t.datetime "Date",                   default: '2013-10-17 10:20:55'
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unitcodes", force: true do |t|
+    t.string   "name",       limit: 16
     t.datetime "created_at"
     t.datetime "updated_at"
   end

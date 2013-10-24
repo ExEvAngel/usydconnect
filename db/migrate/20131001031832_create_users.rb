@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, :limit => 40, :null => false
       t.boolean :is_staff, :default => false
       t.integer :xp, :default => 0
+	  t.integer :no_thread, :default => 0
+	  t.integer :no_comment, :default => 0
       t.boolean :is_banned, :default => false
       t.date :member_since, :default => Time.now
 
