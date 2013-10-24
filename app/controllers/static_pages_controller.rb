@@ -81,7 +81,10 @@ class StaticPagesController < ApplicationController
 		def get_username
 		  if is_logged_in?
 		    @username = cookies.signed[:username]
-		    @u_id = User.get_user_id(@username)
+          if User.exists?(username: @username)
+		        @u_id = User.get_user_id(@username)
+          end
+
 	      end
 		end
 

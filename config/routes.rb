@@ -20,6 +20,7 @@ Usydconnect::Application.routes.draw do
   match("/profile", to: "users#profile", via: "get")
   match("/new", to: "users#create", via: "post")
   match("/signup", to: "users#new", via: "get")
+  match("/change_password", to: "users#change_password", via: "post")
   
   match("/thread", to: "thread#thread", via: "get")
   match("/thread/new", to: "thread#new", via: "get")

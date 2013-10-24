@@ -7,14 +7,17 @@ class ApplicationController < ActionController::Base
   def is_logged_in?
   	username = cookies.signed[:username]
   	password = cookies.signed[:pwd]
-  	
-  	if username.nil? || password.nil?
-  		false
-  	elsif password.empty? || username.empty? 
-  		false
-  	else
-      true
-  	end
+  	if User.exists?(username: username)
+    	if username.nil? || password.nil?
+    		false
+    	elsif password.empty? || username.empty? 
+    		false
+    	else
+        true
+    	end
+    else
+      false
+    end
   end
   
   def valid_login(user, pass)
