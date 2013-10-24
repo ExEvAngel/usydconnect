@@ -33,7 +33,8 @@ class ThreadController < ApplicationController
 		else
 			  @thread = Athread.new(:title => params[:title], :body => params[:body], :user_id => @u_id, :Date => Time.now)
 			  @follow = FollowThread.new(:user_id => @u_id, :athread_id => @thread.id)
-			  if @thread.save && @follow.save 
+			  if @thread.save
+			    @follow.save
 			    # xp increase for creating thread
 		  	    @user = User.where(id: @u_id)
 		  	    xp = @user[0].xp
