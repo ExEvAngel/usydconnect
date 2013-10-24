@@ -9,4 +9,28 @@ module UsersHelper
 	end
   end
 
+  	def is_mod?
+	    username = cookies.signed[:username]
+	    if User.exists?(username: username)
+	      user = User.where(username: username)
+	      userid = user[0].id
+	      if Moderator.exists?(user_id: userid)
+	        true
+	      else
+	        false
+	      end
+	    else
+	      false
+	    end
+  	end
+
+  	def banned?(u_id)
+	    if User.exists?(id: u_id)
+	      user = User.find(u_id)
+	      result = user.is_banned
+	    else
+	      false
+	    end
+  	end
+
 end

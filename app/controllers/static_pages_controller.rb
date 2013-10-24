@@ -4,8 +4,12 @@ class StaticPagesController < ApplicationController
 
   def create
 	if valid_login(params[:username], params[:password])
+    if !banned_user?(params[:username])
 	  create_cookies(params[:username], params[:password])
     redirect_to root_path
+    else
+      redirect_to root_path, notice: 'Banned User!'
+    end
   else 
     redirect_to root_path, notice: 'Invalid login or password!'
 	end
@@ -18,8 +22,8 @@ class StaticPagesController < ApplicationController
   end
   
   def home
-    @recent = Athread.last(3)
-	@pinned = Athread.first(2)
+    @recent = Athread.last(6)
+	@pinned = Athread.first(3)
   end
 
   def help
@@ -40,6 +44,10 @@ class StaticPagesController < ApplicationController
   
   if params[:unitcode][:id].empty?
     params[:unitcode][:id] = nil
+  end
+  
+  if params[:thread][:posted_after].empty?
+    params[:thread][:posted_after] = nil
   end
   
   @threads = Athread.search(params[:search], params[:tag][:id], params[:unitcode][:id], params[:thread][:posted_after])

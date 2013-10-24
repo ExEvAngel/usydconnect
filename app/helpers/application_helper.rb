@@ -11,7 +11,6 @@ module ApplicationHelper
 	end
 	
 	def is_logged_in?
-
   	username = cookies.signed[:username]
   	password = cookies.signed[:pwd]
   	if User.exists?(username: @username)

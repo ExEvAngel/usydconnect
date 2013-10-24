@@ -52,13 +52,15 @@ class ThreadController < ApplicationController
 		@time = @thread[0].Date
 		@user = User.joins(:athread).where(id: @thread[0].user_id)
 		@by = @user[0].username
-		views = @thread[0].increment(:views)
-		views.save
-		@views = @thread[0].views
 		@closed = @thread[0].is_closed
 		@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
         @tag = Tag.where(id: @thread[0].tag_id)
 	    @unitcode = Unitcode.where(id: @thread[0].unitcode_id)
+		if params[:action].nil?
+			views = @thread[0].increment(:views)
+			views.save
+		end
+		@views = @thread[0].views
 	else
 		redirect_to root_path
 	end
@@ -105,42 +107,42 @@ class ThreadController < ApplicationController
   def unfollow
     @follow = FollowThread.where(user_id: @u_id, athread_id: params[:id])
 	if @follow[0].destroy
-		redirect_to thread_path(:id => params[:id])
+		redirect_to thread_path(:id => params[:id], :action => "follow")
 	end
   end
   
   def follow
     @follow = FollowThread.new(:user_id => @u_id, :athread_id => params[:id])
 	if @follow.save
-		redirect_to thread_path(:id => params[:id])
+		redirect_to thread_path(:id => params[:id], :action => "follow")
 	end
   end
   
   def unlike
     @like = Like.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @like[0].destroy
-		redirect_to thread_path(:id => params[:id])
+		redirect_to thread_path(:id => params[:id], :action => "like")
 	end
   end
   
   def like
     @like = Like.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @like.save
-		redirect_to thread_path(:id => params[:id])
+		redirect_to thread_path(:id => params[:id], :action => "like")
 	end
   end
   
   def unflag
     @flag = Flag.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @flag[0].destroy
-		redirect_to thread_path(:id => params[:id])
+		redirect_to thread_path(:id => params[:id], :action => "flag")
 	end
   end
   
   def flag
     @flag = Flag.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @flag.save
-		redirect_to thread_path(:id => params[:id])
+		redirect_to thread_path(:id => params[:id], :action => "flag")
 	end
   end
   
