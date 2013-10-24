@@ -83,14 +83,17 @@
 					&nbsp&nbsp
 					<div class="achievements">
 						<h3>Achievements</h3>
-						if has > 0 threads
-						<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg">
+						<% if @postcount > 0 %>
+							<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg">
+						<% end %>
 						
-						if has > 0 comments
-						<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg">
-
-						if has >= 100 XP
-						<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl10a.jpg">
+						<% if @answercount > 0 %>
+							<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg">
+						<% end %>
+						
+						<% if @xp > 100 %>
+							<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl10a.jpg">
+						<% end %>
 					</div>
 				</div>
 				<br>
