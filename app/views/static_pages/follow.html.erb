@@ -23,19 +23,19 @@
 									</tr>
 									<% if !@followt.empty? %>
 										<% @followt.each do |t| %>
-											<tr>
-												<td class="no-deco"><%= link_to title(t.athread_id)  ,thread_path(:id => t.athread_id) %></td>
-												<td class="no-deco"><%= link_to postby(t.athread_id), profile_path(:id=> threadowner(t.athread_id)) %></td>
-												<td><%= threadpost(t.athread_id) %></td>
-												<td><%= threadview(t.athread_id) %></td>
-												<td><%=  threadrep(t.athread_id) %></td>
-											
-											
+											<% if !t.athread_id.nil? %>
+													<tr>
+														<td class="no-deco"><%= link_to title(t.athread_id)  ,thread_path(:id => t.athread_id) %></td>
+														<td class="no-deco"><%= link_to postby(t.athread_id), profile_path(:id=> threadowner(t.athread_id)) %></td>
+														<td><%= threadpost(t.athread_id) %></td>
+														<td><%= threadview(t.athread_id) %></td>
+														<td><%=  threadrep(t.athread_id) %></td>
 												<div class="gap1"></div>
 												<div class="follow">
 													<td class="no-deco"><%= button_to('Unfollow Thread', follow_uft_path(:id => t.athread_id), :method => :post, class: "button") %></td>
 												</div>
 												</tr>
+											<% end %>
 										<% end %>
 									<% end %>
 
