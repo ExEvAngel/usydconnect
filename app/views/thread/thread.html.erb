@@ -13,8 +13,6 @@
 					-&nbsp<%= @unitcode[0].name %>
 				</div>
 				<table class="thread-header">
-					
-
 					<tr>
 						<td>
 							<div class="thread-details">
@@ -39,22 +37,13 @@
 						<td>
 							<% if is_logged_in? %>
 								<% if is_threadowner?(params[:id]) || is_mod? %>
-									<div class="gap3"></div>
-									<div class="close">
-										<%= button_to('Close Thread', thread_close_path(:id => params[:id]),  :confirm => 'Are you sure you want to close this thread?', :method => :post, class: "button") %>
-									</div>
+									<%= button_to('Close Thread', thread_close_path(:id => params[:id]),  :confirm => 'Are you sure you want to close this thread?', :method => :post, class: "button") %>
 								<% end %>
 								<% if !is_threadowner?(params[:id]) %>
 									<% if not_following?(@u_id, params[:id]) %>
-										<div class="gap2"></div>
-										<div class="follow">
-											<%= button_to('Follow Thread', thread_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-										</div>
+										<%= button_to('Follow Thread', thread_follow_path(:id => params[:id]), :method => :post, class: "button") %>
 									<% else %>
-										<div class="gap1"></div>
-										<div class="follow">
-											<%= button_to('Unfollow Thread', thread_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
-										</div>
+										<%= button_to('Unfollow Thread', thread_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
 									<% end %>
 								<% end %>
 							<% end %>
@@ -69,16 +58,15 @@
 						<% if is_logged_in? %>
 							<% if !is_threadowner?(params[:id]) %>
 								<% if not_liked?(@u_id, params[:id], 'thread') %>
-										<%= button_to('like', thread_like_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+									<%= button_to('like', thread_like_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
 								<% else %>
-
-										<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+									<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
 								<% end %>
 								
 								<% if not_flagged?(@u_id, params[:id], 'thread') %>
-										<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+									<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
 								<% else %>
-										<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
+									<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => params[:id], :type => 'thread'), :method => :post, class: "button") %>
 								<% end %>
 							<% end %>
 						<% end %>
@@ -99,15 +87,15 @@
 											<td class="thread-comments-footer1">
 												<% if is_logged_in? %>
 													<% if not_liked?(@u_id, c.id, 'comment') %>
-															<%= button_to('like', thread_like_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+														<%= button_to('like', thread_like_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
 													<% else %>
-															<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+														<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
 													<% end %>
 													
 													<% if not_flagged?(@u_id, c.id, 'comment') %>
-															<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+														<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
 													<% else %>
-															<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+														<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
 													<% end %>
 												<% end %>
 												<table class="thread-comments-footer2">

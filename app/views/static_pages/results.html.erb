@@ -6,14 +6,19 @@
 	<body>
 		<div class="content-outer">
 			<div class="content-inner">
+				<br>
 				<table class="center">
 					<%= form_tag('/results', method: 'get') do %>
 						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
-						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '#') %></td>
+						<td><%= collection_select(:tag, :id, Tag.all, :id, :name, {include_blank: true}) %></td>
+						<td><%= collection_select(:unitcode, :id, Unitcode.all, :id, :name, {include_blank: true})%></td>
+						<td><%= date_field("thread", "posted_after", class: "input-date")%></td>
+						<td></td>
+						<%# <td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') </td> %>
 						<td><%= submit_tag("Search", class: "button") %></td>
 					<% end %>
 				</table>
-				
+				<br>
 				<div class="margin">
 					<div class="center">
 						<div class="section-inner">
@@ -39,11 +44,11 @@
 								</table>
 							</div>
 							<% if @threads.empty? %>
-								0 search results
 							<% end %>
 						</div>
 					</div>
 				</div>
+				<br>
 			</div>
 		</div>
 	</body>
