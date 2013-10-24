@@ -37,13 +37,11 @@
 									</tr>
 									<% @pinned.each do |p| %>
 										<tr>
-											<% if !p.nil?%>
-												<td><%= link_to p.title  ,thread_path(:id => p.id) %></td>
-												<td><%= link_to author(p.user_id), profile_path(:id=> p.user_id) %></td>
-												<td><%= p.Date %></td>
-												<td><%= p.views %></td>
-												<td># rept</td
-											<% end %>
+											<td><%= link_to p.title  ,thread_path(:id => p.id) %></td>
+											<td><%= link_to author(p.user_id), profile_path(:id=> p.user_id) %></td>
+											<td><%= p.Date.strftime("%R %d/%m/%y") %></td>
+											<td><%= p.views %></td>
+											<td># rept</td>
 										</tr>
 									
 									<% end %>
