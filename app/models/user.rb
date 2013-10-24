@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   def self.get_user_id(user)
     @user = User.where(username: user)
     @user[0].id
+
   end
   
   def self.get_username(id)

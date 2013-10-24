@@ -19,6 +19,7 @@ class StaticPagesController < ApplicationController
   
   def home
     @recent = Athread.last(3)
+	@pinned = Athread.first(2)
   end
 
   def help
@@ -33,7 +34,15 @@ class StaticPagesController < ApplicationController
   
   def results
   
-  @threads = Athread.all
+  if params[:tag][:id].empty?
+    params[:tag][:id] = nil
+  end
+  
+  if params[:unitcode][:id].empty?
+    params[:unitcode][:id] = nil
+  end
+  
+  @threads = Athread.search(params[:search], params[:tag][:id], params[:unitcode][:id], params[:thread][:posted_after])
   
   end
 
@@ -80,7 +89,10 @@ class StaticPagesController < ApplicationController
 		def get_username
 		  if is_logged_in?
 		    @username = cookies.signed[:username]
-		    @u_id = User.get_user_id(@username)
+          if User.exists?(username: @username)
+		        @u_id = User.get_user_id(@username)
+          end
+
 	      end
 		end
 

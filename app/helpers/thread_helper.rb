@@ -39,17 +39,21 @@ module ThreadHelper
 
   def is_threadowner?(thread_id)
   	username = cookies.signed[:username]
-  	user = User.where(username: username)
-  	userid = user[0].id
+    if User.exists?(username: @username)
+    	user = User.where(username: username)
+    	userid = user[0].id
 
-  	thread = Athread.where(id: thread_id)
-  	uid =thread[0].user_id
+    	thread = Athread.where(id: thread_id)
+    	uid =thread[0].user_id
 
-  	if userid == uid
-  		true
-  	else
+    	if userid == uid
+    		true
+    	else
+        false
+    	end
+    else
       false
-  	end
+    end
   end
   
 end

@@ -26,6 +26,11 @@
 							<td>&nbsp</td>
 							<td><%= password_field_tag :password %></td>
 						</tr>
+						<tr>
+							<td><%= label_tag :"Retype Password" %>:</td>
+							<td>&nbsp</td>
+							<td><%= password_field_tag :verifypassword %></td>
+						</tr>
 					</table>
 					<p class="error">Add "Retype password" and function to check that passwords match.<br>Add checkbox: Agree with Terms and Conditions/ Policies.</p>
 					<%= submit_tag("Sign Up", class: "button")%>

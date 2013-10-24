@@ -2,6 +2,8 @@ class CreateAthreads < ActiveRecord::Migration
   def change
     create_table :athreads do |t|
       t.belongs_to :user
+	  t.belongs_to :tag
+	  t.belongs_to :unitcode
       t.string :title, :limit => 200, :null => false
       t.string :body, :limit => 1000, :null => false
       t.boolean :is_closed, :default => false

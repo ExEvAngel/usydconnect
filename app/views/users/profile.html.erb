@@ -11,24 +11,37 @@
 					<div class="nav-left">
 						<div class="nav-left-details">
 							<h3><%= @name %></h3>
+							<br>
 							<div class="italic">
-								<p><%= @member_since %></p>
+								<p class="error">join date not working<%= @member_since %></p>
 								<p><%= @email %></p>
 							</div>
-							<br>
+
 							<%#= gotta make action
 							link_to "Change email", user_changeemail_path(:email => @user[:email]), {:method => :post, "data-role" => "button", "data-inline" => "true" } %>
-							<% if @u_id == params[:id] %>
-								<button class="button"> Change Password </button>
-							<% else %>
-								<% if is_logged_in? %>
-									<% if not_already_following?(@u_id, params[:id]) %>
-									<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
-									<% else %>
-									<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
+							<p class="error"> need a mechanism to check if profile is own, and therefore if email and password are revealed </p>
+							
+								
+									<% if is_logged_in? %>
+										<% @paramid.to_i == (params[:id])%>
+										<% if @uid.to_i == @paramsid.to_i %>
+											<%= button_to('Change password', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+										<% else %>
+
+											<% if not_already_following?(@u_id, params[:id]) %>
+											<%= button_to('Follow User', user_follow_path(:id => params[:id]), :method => :post, class: "button") %>
+											<% else %>
+											<%= button_to('Unfollow User', user_unfollow_path(:id => params[:id]), :method => :post, class: "button") %>
+											<% end %>
+										<% end %>
 									<% end %>
-								<% end %>
-							<% end %>
+							
+
+
+						<br>
+							
+							<p class="error">either you can see the follow button, or you can see the change password button.</p>
+
 						</div>
 			
 						<br>
@@ -36,25 +49,53 @@
 							<table>
 								<tr>
 									<td class="strong">Questions:</td>
-									<td class="error">0</td>
+									<td>2</td>
 									<%-# <%= @postcount??? -%>
 								</tr>
 								<tr>
 									<td class="strong">Answers:</td>
-									<td class="error">0</td>
+									<td>1</td>
 									<%-# <%= @answercount??? -%>
 								</tr>
 								<tr>
 									<td class="strong">Total XP:</td>
 									<td><%= @xp %></td>
+									<%-#!--- .... -%>
 								</tr>
 							</table>
 						</div>
 					</div>
-					&nbsp&nbsp&nbsp
+					&nbsp&nbsp
 					<div class="achievements">
 						achievements
+						<p class="error"> title needs fixing, is not displaying name correctly </p>
 					</div>
+					<div class="change_password">
+						<%= form_tag('/change_password', method: 'post') do %>
+					<table class="indent">
+						<%= hidden_field_tag "id", @u_id %>
+						<tr>
+							<td><%= label_tag :"Old Password" %>:</td>
+							<td>&nbsp</td>
+							<td><%= password_field_tag :oldpassword %></td>
+						</tr>
+						<tr>
+							<td><%= label_tag :"New Password" %>:</td>
+							<td>&nbsp</td>
+							<td><%= password_field_tag :newpassword %></td>
+						</tr>
+						<tr>
+							<td><%= label_tag :"Retype Password" %>:</td>
+							<td>&nbsp</td>
+							<td><%= password_field_tag :verifypassword %></td>
+						</tr>
+					</table>
+					<p class="error">Add "Retype password" and function to check that passwords match.<br>Add checkbox: Agree with Terms and Conditions/ Policies.</p>
+					<%= submit_tag("Submit", class: "button")%>
+					<% end %>
+						<p class="error"><% if flash[:notice] %>
+				    <div class="notice"><%= flash[:notice] %></div>
+				  <% end %>
 				</div>
 				<br>
 			</div>
