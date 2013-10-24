@@ -11,3 +11,34 @@ Moderator.create(user_id: user.id, moderator_since: Time.now)
 
 Tag.create([{name: 'General'}, {name: 'Assignment'}, {name: 'Content'}, {name: 'Unit'}, {name: 'Staff'}, {name: 'Exams'}])
 Unitcode.create([{name: 'General'}, {name: 'COMP'}, {name: 'ELEC'}, {name: 'INFO'}, {name: 'ISYS'}])
+
+# Pinned Posts
+# rules = Athread.create(user: user.id, post: "Before posting any threads/comments on the forum, all users must agree to abide by all the proceeding forum rules 
+# 												- Do not include any threads and/or posts that contain any offensive language 
+# 												- Do not post any content that will reveal any personal information about any other member of the forum 
+# 												- Do not post any offensive or insulting content 
+# 												- Do not impersonate another forum member 
+# 												- Do not spam the forum with repeated threads")
+
+# error = "In the event of an error, please attempt the following fixes: 
+# 			Refresh your browser page, 
+# 			Restart your browser, 
+# 			Use a different browser to verify whether the problem persists"
+
+# has a comment:
+
+# "In the event that all these options fail, you may then notify one of the active moderators of the problem. 
+# Please note that fixes may not be immediate and could require some time to find a solution if the problem is not localised to your machine."
+
+
+
+# Achievement Images
+
+# image url for first new thread
+# http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg
+
+# first comment
+# http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg
+
+# reaching 100xp
+# http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl10a.jpg
