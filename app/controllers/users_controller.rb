@@ -39,6 +39,8 @@ class UsersController < ApplicationController
 			@member_since = @user[0].member_since
 			@email = @user[0].email
 			@xp = @user[0].xp
+			@answercount = @user[0].no_comment
+			@postcount = @user[0].no_thread
 		else
 			redirect_to root_path
 		end
