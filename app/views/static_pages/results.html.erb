@@ -33,7 +33,7 @@
 											<td><%= link_to postby(t.id), profile_path(:id=> threadowner(t.id)) %></td>
 											<td><%= t.Date %></td>
 											<td><%= t.views %></td>
-											<td># rept</td>
+											<td><%= threadrep(t.id)%></td>
 										</tr>
 									<% end %>
 								</table>
