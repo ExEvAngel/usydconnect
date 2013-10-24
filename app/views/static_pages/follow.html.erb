@@ -29,19 +29,10 @@
 												<td><%= threadpost(t.athread_id) %></td>
 												<td><%= threadview(t.athread_id) %></td>
 												<td><%=  threadrep(t.athread_id) %></td>
-									<% if not_following?(@u_id, t.athread_id) %>
-										<div class="gap2"></div>
-										<div class="follow">
-											<td class="no-deco"><%= button_to('Follow Thread', follow_ft_path(:id => t.athread_id), :method => :post, class: "button") %></td>
-										</div>
-									<% else %>
 										<div class="gap1"></div>
 										<div class="follow">
 											<td class="no-deco"><%= button_to('Unfollow Thread', follow_uft_path(:id => t.athread_id), :method => :post, class: "button") %></td>
 										</div>
-									<% end %>
-												
-											</tr>
 										<% end %>
 									<% end %>
 
@@ -65,11 +56,7 @@
 												<td><%= membersince(r.second_user_id) %></td>
 												<td><%= xp(r.second_user_id) %></td>
 												<td class="no-deco">
-													<% if not_already_following?(@u_id, r.second_user_id) %>
-											<%= button_to('Follow User', follow_fu_path(:id => r.second_user_id), :method => :post, class: "button") %>
-											<% else %>
 											<%= button_to('Unfollow User', follow_ufu_path(:id => r.second_user_id), :method => :post, class: "button") %>
-											<% end %></td>
 											</tr>
 										<% end %>
 									<% end %>
