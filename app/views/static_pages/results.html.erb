@@ -6,13 +6,23 @@
 	<body>
 		<div class="content-outer">
 			<div class="content-inner">
-				<table class="center">
-					<%= form_tag('/results', method: 'get') do %>
+				<br>
+				<%= form_tag('/results', method: 'get') do %>
+					<table class="center">
 						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
-						<td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '#') %></td>
+						<td><%= collection_select(:tag, :id, Tag.all, :id, :name, {include_blank: true}) %></td>
+						<td><%= collection_select(:unitcode, :id, Unitcode.all, :id, :name, {include_blank: true})%></td>
+						<td><%= date_field("thread", "posted_after", class: "input-date")%></td>
+						<td></td>
+						<%# <td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') </td> %>
 						<td><%= submit_tag("Search", class: "button") %></td>
-					<% end %>
-				</table>
+					</table>
+				<% end %>
+
+				<% if flash[:notice] %>
+					<div class="notice"><%= flash[:notice] %></div>
+				<% end %>
+				<br>
 				
 				<div class="margin">
 					<div class="center">

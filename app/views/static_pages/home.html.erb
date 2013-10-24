@@ -7,8 +7,8 @@
 		<div class="content-outer">
 			<div class="content-inner">
 				<br>
-				<table class="center">
-					<%= form_tag('/results', method: 'get') do %>
+				<%= form_tag('/results', method: 'get') do %>
+					<table class="center">
 						<td><%= text_field_tag(:search, "", placeholder: "search", class: "search-field") %></td>
 						<td><%= collection_select(:tag, :id, Tag.all, :id, :name, {include_blank: true}) %></td>
 						<td><%= collection_select(:unitcode, :id, Unitcode.all, :id, :name, {include_blank: true})%></td>
@@ -16,8 +16,8 @@
 						<td></td>
 						<%# <td><%= link_to(image_tag("dropdownarrow.png", class: "dropdown"), '') </td> %>
 						<td><%= submit_tag("Search", class: "button") %></td>
-					<% end %>
-				</table>
+					</table>
+				<% end %>
 
 				<% if flash[:notice] %>
 					<div class="notice"><%= flash[:notice] %></div>
