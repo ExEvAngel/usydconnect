@@ -8,41 +8,38 @@
 			<div class="content-inner">
 				<h2>Sign Up</h2>
 
-
 				<%= form_tag('/new', method: 'post') do %>
-					<table class="indent">
+					<table class="sign-up">
 						<tr>
 							<td><%= label_tag :username %>:</td>
 							<td>&nbsp</td>
-							<td><%= text_field_tag :username %></td>
+							<td><%= text_field_tag(:username, "", class: "text-field", placeholder: "username", maxlength: 16) %></td>
 						</tr>
 						<tr>
 							<td><%= label_tag :email %>:</td>
 							<td>&nbsp</td>
-							<td><%= text_field_tag :email %></td>
+							<td><%= text_field_tag(:email, "", class: "text-field", placeholder: "abcd1234@uni.sydney.edu.au") %></td>
 						</tr>
 						<tr>
 							<td><%= label_tag :password %>:</td>
 							<td>&nbsp</td>
-							<td><%= password_field_tag :password %></td>
+							<td><%= password_field_tag(:password, "", class: "text-field",  maxlength: 16) %></td>
 						</tr>
 						<tr>
 							<td><%= label_tag :"Retype Password" %>:</td>
 							<td>&nbsp</td>
-							<td><%= password_field_tag :verifypassword %></td>
+							<td><%= password_field_tag(:verifypassword, "", class: "text-field",  maxlength: 16) %></td>
 						</tr>
 					</table>
-					<p class="error">Add "Retype password" and function to check that passwords match.<br>Add checkbox: Agree with Terms and Conditions/ Policies.</p>
+					<br>
 					<%= submit_tag("Sign Up", class: "button")%>
 				<% end %>
-				<p class="error">
-					<% if flash[:notice] %>
-				    <div class="notice"><%= flash[:notice] %></div>
-				  <% end %>
-					Add realtime checking if name is available.<br>
-					A new input field for verification appears when user clicks "Sign Up".<br>Add a function to randomly generate a verification code and email it to the user's email address.<br>Add a function to check if the verification code entered by the user matches.<br>
-					This page should not be visible to users already logged in.
-				</p>
+
+				<br>
+				<% if flash[:notice] %>
+					<div class="notice"><%= flash[:notice] %></div>
+				<% end %>
+				<br>
 			</div>
 		</div>
 	</body>

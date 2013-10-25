@@ -126,7 +126,6 @@
 					
 					<% if is_logged_in? %>
 						<br>
-						<br>
 						<% if !@closed %>
 						<%= form_tag('/thread/submitc', method: 'post') do %>
 							<%= hidden_field_tag "at_id", params[:id] %>
