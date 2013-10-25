@@ -28,8 +28,11 @@ Unitcode.create([{name: 'General'}, {name: 'COMP'}, {name: 'ELEC'}, {name: 'INFO
  Comment.create(user_id: user.id, athread_id: thread.id, body: 'In the event that all these options fail, you may then notify one of the active moderators of the problem. 
  Please note that fixes may not be immediate and could require some time to find a solution if the problem is not localised to your machine.', date: Time.now)
 
-Achievement.create(name: 'First Thread', description: 'Created your first thread', condition: 5, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg')
-Achievement.create(name: 'First Comment', description: 'Created your first comment', condition: 3, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg')
+Achievement.create(name: 'Paltry Pig', description: 'Level 1', condition: 10, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/levels/pig.png')
+Achievement.create(name: 'Defective Dog', description: 'Level 2', condition: 20, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/levels/dog.png')
+Achievement.create(name: 'Ridiculous Rooster', description: 'Level 3', condition: 30, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/levels/rooster.png')
+Achievement.create(name: 'Mindless Monkey', description: 'Level 4', condition: 40, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/levels/monkey.png')
+Achievement.create(name: 'Sacrificial Sheep', description: 'Level 5', condition: 50, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/levels/sheep.png')
 # Achievement Images
 
 # image url for first new thread
