@@ -84,18 +84,18 @@
 					<div class="achievements">
 						<h3>Achievements</h3>
 						
-						<% @achievement.each do |a| %>
-							<% achievement = get_achievement(a.id) %>
-							
-							<img src=<%= achievement.badge %>>
-							<br>
-							
-							<%= achievement.name %>
-							<br>
-							<%= achievement.description %>
-							<br>
-							<br>
-						<% end %>
+						<div class="achievement-outer">
+							<% @achievement.each do |a| %>
+								<% achievement = get_achievement(a.id) %>
+								<div class="achievement-inner">
+									<img src=<%= achievement.badge %> class="achievement-img">
+									<br>
+									<div class="small"><%= achievement.description %></div> - <div class="normal"><%= achievement.name %></div>
+									<br>
+									<br>
+								</div>	
+							<% end %>
+						</div>
 					</div>
 				</div>
 				<br>
