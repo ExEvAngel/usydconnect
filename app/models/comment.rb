@@ -4,4 +4,6 @@ class Comment < ActiveRecord::Base
   has_one :athread, :through => :post
   has_many :like, :as => :apost
   has_many :flag, :as => :apost
+  
+  validates :body, presence: true
 end

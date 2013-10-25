@@ -9,6 +9,9 @@ class Athread < ActiveRecord::Base
   has_many :like, :as => :apost
   has_many :flag, :as => :apost
   
+  validates :title, presence: true
+  validates :body, presence: true
+  
   def self.search(search, t_id, unit_id, posted_after)
     string = "%" + search + "%"
     @result = Athread.where("title like ?", string)
