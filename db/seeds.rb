@@ -28,7 +28,8 @@ Unitcode.create([{name: 'General'}, {name: 'COMP'}, {name: 'ELEC'}, {name: 'INFO
  Comment.create(user_id: user.id, athread_id: thread.id, body: 'In the event that all these options fail, you may then notify one of the active moderators of the problem. 
  Please note that fixes may not be immediate and could require some time to find a solution if the problem is not localised to your machine.', date: Time.now)
 
-
+Achievement.create(name: 'First Thread', description: 'Created your first thread', condition: 5, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg')
+Achievement.create(name: 'First Comment', description: 'Created your first comment', condition: 3, badge: 'http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg')
 # Achievement Images
 
 # image url for first new thread

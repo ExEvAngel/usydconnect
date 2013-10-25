@@ -41,6 +41,22 @@ class UsersController < ApplicationController
 			@xp = @user[0].xp
 			@answercount = @user[0].no_comment
 			@postcount = @user[0].no_thread
+			
+			#add achievements
+			if @u_id == params[:id].to_i
+				@achievements = Achievement.find(:all)
+				@achievements.each do |a|
+					if @xp >= a.condition
+						if UserAchievement.where(user_id: @u_id, achievement_id: a.id).empty?
+							@ua = UserAchievement.new(:user_id => @u_id, :achievement_id => a.id)
+							@ua.save
+						end
+					end
+				end
+			end
+			
+			@achievement = UserAchievement.where(user_id: params[:id])
+			
 		else
 			redirect_to root_path
 		end
@@ -108,7 +124,7 @@ class UsersController < ApplicationController
 		if is_logged_in?
 			@username = cookies.signed[:username]
 			if User.exists?(username: @username)
-			@u_id = User.get_user_id(@username)
+				@u_id = User.get_user_id(@username)
 			end
 		end
 	end

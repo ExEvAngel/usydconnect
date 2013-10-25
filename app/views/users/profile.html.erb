@@ -83,16 +83,18 @@
 					&nbsp&nbsp
 					<div class="achievements">
 						<h3>Achievements</h3>
-						<% if @postcount > 0 %>
-							<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl7a.jpg">
-						<% end %>
 						
-						<% if @answercount > 0 %>
-							<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl1a.jpg">
-						<% end %>
-						
-						<% if @xp > 100 %>
-							<img src="http://i239.photobucket.com/albums/ff97/ru46t9/achievements/lvl10a.jpg">
+						<% @achievement.each do |a| %>
+							<% achievement = get_achievement(a.id) %>
+							
+							<img src=<%= achievement.badge %>>
+							<br>
+							
+							<%= achievement.name %>
+							<br>
+							<%= achievement.description %>
+							<br>
+							<br>
 						<% end %>
 					</div>
 				</div>

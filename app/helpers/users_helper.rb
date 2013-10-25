@@ -32,5 +32,9 @@ module UsersHelper
 	      false
 	    end
   	end
-
+	
+	def get_achievement(a_id)
+		@achievements = Achievement.where(id: a_id)
+		achievement = @achievements[0]
+	end
 end
