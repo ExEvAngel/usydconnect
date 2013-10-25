@@ -134,12 +134,12 @@ class ThreadController < ApplicationController
 		# decrement number of likes
 		if params[:type].eql? "thread"
 			@thread = Athread.where(id: params[:post_id])
-			@user = User.where(id: @thread[0].id)
+			@user = User.where(id: @thread[0].user_id)
 			like = @user[0].decrement(:xp)
 			like.save
 		else
 			@comment = Comment.where(id: params[:post_id])
-			@user = User.where(id: @comment[0].id)
+			@user = User.where(id: @comment[0].user_id)
 			like = @user[0].decrement(:xp)
 			like.save
 		end
@@ -153,12 +153,12 @@ class ThreadController < ApplicationController
 		# increment number of likes
 		if params[:type].eql? "thread"
 			@thread = Athread.where(id: params[:post_id])
-			@user = User.where(id: @thread[0].id)
+			@user = User.where(id: @thread[0].user_id)
 			like = @user[0].increment(:xp)
 			like.save
-		else
+		else 
 			@comment = Comment.where(id: params[:post_id])
-			@user = User.where(id: @comment[0].id)
+			@user = User.where(id: @comment[0].user_id)
 			like = @user[0].increment(:xp)
 			like.save
 		end
