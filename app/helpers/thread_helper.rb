@@ -49,7 +49,26 @@ module ThreadHelper
     	if userid == uid
     		true
     	else
-        false
+			false
+    	end
+    else
+      false
+    end
+  end
+  
+  def is_commentowner?(comment_id)
+  	username = cookies.signed[:username]
+    if User.exists?(username: @username)
+    	user = User.where(username: username)
+    	userid = user[0].id
+
+    	comment = Comment.where(id: comment_id)
+    	uid = comment[0].user_id
+
+    	if userid == uid
+    		true
+    	else
+			false
     	end
     else
       false
