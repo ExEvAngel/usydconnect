@@ -86,8 +86,8 @@
 						
 						<div class="achievement-outer">
 							<% @achievement.each do |a| %>
-								<% achievement = get_achievement(a.id) %>
 								<div class="achievement-inner">
+									<% achievement = get_achievement(a.id) %>
 									<img src=<%= achievement.badge %> class="achievement-img">
 									<br>
 									<div class="small"><%= achievement.description %></div> - <div class="normal"><%= achievement.name %></div>
