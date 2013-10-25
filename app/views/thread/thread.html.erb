@@ -85,19 +85,17 @@
 										</tr>
 										<tr>
 											<td class="thread-comments-footer1">
-												<% if is_logged_in? %>
-													<% if !is_commentowner?(c.id) %>
-														<% if not_liked?(@u_id, c.id, 'comment') %>
-															<%= button_to('like', thread_like_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-														<% else %>
-															<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-														<% end %>
-														
-														<% if not_flagged?(@u_id, c.id, 'comment') %>
-															<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-														<% else %>
-															<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
-														<% end %>
+												 <% if !is_commentowner?(c.id) %>
+													<% if not_liked?(@u_id, c.id, 'comment') %>
+														<%= button_to('like', thread_like_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+													<% else %>
+														<%= button_to('unlike', thread_unlike_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+													<% end %>
+													
+													<% if not_flagged?(@u_id, c.id, 'comment') %>
+														<%= button_to('flag', thread_flag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
+													<% else %>
+														<%= button_to('unflag', thread_unflag_path(:id => params[:id], :post_id => c.id, :type => 'comment'), :method => :post, class: "button") %>
 													<% end %>
 												<% end %>
 												<table class="thread-comments-footer2">
