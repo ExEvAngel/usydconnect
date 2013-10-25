@@ -1,6 +1,7 @@
 class ThreadController < ApplicationController
   before_action :get_username
 
+  # new thread page loads draft thread if there is one
   def new
 	redirect_to root_path unless is_logged_in?
 	@draft = DraftThread.where(:user_id => @u_id)
@@ -10,6 +11,7 @@ class ThreadController < ApplicationController
 	end
   end
   
+  # destorys draft thread and create the thread which is posted
   def create
 	redirect_to root_path unless is_logged_in?
 	@draft = DraftThread.where(:user_id => @u_id)
@@ -35,6 +37,7 @@ class ThreadController < ApplicationController
 		  	    xp = @user[0].xp
 		        @user[0].xp = xp + 5
 		  	    @user[0].save
+				#increments number of threads the user has created
 				no_thread = @user[0].increment(:no_thread)
 			    no_thread.save
 		        redirect_to thread_path(:id => @thread.id)
@@ -45,6 +48,7 @@ class ThreadController < ApplicationController
 	end
   end
   
+  # retrieve thread information to be displayed
   def thread
   	if Athread.exists?(id: params[:id])
 		@thread = Athread.where(id: params[:id])
@@ -58,7 +62,7 @@ class ThreadController < ApplicationController
 		@likes = Like.where(apost_id: params[:id], apost_type: 'thread').count
         @tag = Tag.where(id: @thread[0].tag_id)
 	    @unitcode = Unitcode.where(id: @thread[0].unitcode_id)
-		if params[:action].nil?
+		if params[:action] != 1
 			views = @thread[0].increment(:views)
 			views.save
 		end
@@ -69,6 +73,7 @@ class ThreadController < ApplicationController
 	
   end
 
+  # closes a thread
   def close
   		@thread = Athread.where(id: params[:id])
   		if !@thread[0].is_closed
@@ -97,6 +102,7 @@ class ThreadController < ApplicationController
 		  xp = @user[0].xp
 	      @user[0].xp = xp + 3
 		  @user[0].save
+		  #increment users number of comments
 		  no_comment = @user[0].increment(:no_comment)
 		  no_comment.save
 	    redirect_to thread_path(:id =>params[:at_id])
@@ -111,20 +117,21 @@ class ThreadController < ApplicationController
   def unfollow
     @follow = FollowThread.where(user_id: @u_id, athread_id: params[:id])
 	if @follow[0].destroy
-		redirect_to thread_path(:id => params[:id], :action => "follow")
+		redirect_to thread_path(:id => params[:id], :action => 1)
 	end
   end
   
   def follow
     @follow = FollowThread.new(:user_id => @u_id, :athread_id => params[:id])
 	if @follow.save
-		redirect_to thread_path(:id => params[:id], :action => "follow")
+		redirect_to thread_path(:id => params[:id], :action => 1)
 	end
   end
   
   def unlike
     @like = Like.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @like[0].destroy
+		# decrement number of likes
 		if params[:type].eql? "thread"
 			@thread = Athread.where(id: params[:post_id])
 			@user = User.where(id: @thread[0].id)
@@ -136,13 +143,14 @@ class ThreadController < ApplicationController
 			like = @user[0].decrement(:xp)
 			like.save
 		end
-		redirect_to thread_path(:id => params[:id], :action => "like")
+		redirect_to thread_path(:id => params[:id], :action => 1)
 	end
   end
   
   def like
     @like = Like.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @like.save
+		# increment number of likes
 		if params[:type].eql? "thread"
 			@thread = Athread.where(id: params[:post_id])
 			@user = User.where(id: @thread[0].id)
@@ -154,21 +162,21 @@ class ThreadController < ApplicationController
 			like = @user[0].increment(:xp)
 			like.save
 		end
-		redirect_to thread_path(:id => params[:id], :action => "like")
+		redirect_to thread_path(:id => params[:id], :action => 1)
 	end
   end
   
   def unflag
     @flag = Flag.where(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @flag[0].destroy
-		redirect_to thread_path(:id => params[:id], :action => "flag")
+		redirect_to thread_path(:id => params[:id], :action => 1)
 	end
   end
   
   def flag
     @flag = Flag.new(user_id: @u_id, apost_id: params[:post_id], apost_type: params[:type])
 	if @flag.save
-		redirect_to thread_path(:id => params[:id], :action => "flag")
+		redirect_to thread_path(:id => params[:id], :action => 1)
 	end
   end
   

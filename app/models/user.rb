@@ -15,15 +15,19 @@ class User < ActiveRecord::Base
   has_many :like
   has_many :flag
   
+ # validates :terms_of_service, acceptance: { accept: 'yes' } 
  validates :username, uniqueness: { case_sensitive: false },
             presence: true, 
-            length: { maximum: 16 }
- validates :password, presence: true, 
-            length: { minimum: 6, maximum: 16 }
+            length: { minimum: 1, too_short: "Username must be at least %{count} characters" }
+ validates :username, length: {maximum: 16, too_long: "Username cannot exceed %{count} characters" }
+ validates :password, presence: true
+ validates :password, length: { minimum: 6,  too_short: "Password must be at least %{count} characters" }
+ validates :password, length: { maximum: 16, too_long: "Password cannot exceed %{count} characters" }
+ #validates :password_confirmation, confirmation: true, presence: true
  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w*]+\.?+[sydney]+\.[edu]+\.[au]+\z/i
  validates :email, uniqueness: { case_sensitive: false }, 
             presence: true, 
-            format: { with: VALID_EMAIL_REGEX }
+            format: { with: VALID_EMAIL_REGEX, message: "Your email address must be a valid Sydney University email." }
 
   def self.get_user_id(user)
     @user = User.where(username: user)

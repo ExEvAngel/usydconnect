@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 	before_action :get_username
 
+	# creates new user from sign up page
 	def create
+		# check for errors
 		if params[:username].blank? || params[:username].blank? || params[:email].blank?  || params[:password].blank? || params[:verifypassword].blank?  
 		redirect_to signup_path, notice: 'Please fill in all the required fields'
 		else
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
 		redirect_to root_path unless !is_logged_in?
 	end
 
+	# gets profile information to be displayed
 	def profile
 		if User.exists?(id: params[:id])
 			@user = User.where(id: params[:id])
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
 				end
 			end
 			
+			# retrieves achievements to be displayed
 			@achievement = UserAchievement.where(user_id: params[:id])
 			
 		else
@@ -90,6 +94,7 @@ class UsersController < ApplicationController
 
 
 	def change_password
+		#checks for errors
 		if params[:oldpassword].blank? || params[:newpassword].blank? || params[:verifypassword].blank?  
 		redirect_to signup_path, notice: 'Please fill in all the required fields'
 		else
@@ -98,6 +103,7 @@ class UsersController < ApplicationController
 				user = User.find(params[:id])				
 				if (user.password).eql? params[:oldpassword]
 					if  params[:newpassword] == params[:verifypassword]
+						# resets the cookies for new password
 						if user.update_attributes(password: params[:newpassword])
 							cookies.delete(:pwd)
 							cookies.signed[:pwd] = {

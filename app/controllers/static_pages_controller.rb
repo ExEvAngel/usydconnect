@@ -36,6 +36,7 @@ class StaticPagesController < ApplicationController
   def policy
   end
   
+  # to display search results
   def results
   
   if params[:tag][:id].empty?
@@ -53,20 +54,23 @@ class StaticPagesController < ApplicationController
   @threads = Athread.search(params[:search], params[:tag][:id], params[:unitcode][:id], params[:thread][:posted_after])
   
   end
-
+	
+  # to display the follow page
   def follow
     
     @followu = FollowUser.where(user_id: @u_id)
     @followt = FollowThread.where(user_id: @u_id)
   end 
 
+  #submit follow thread request
   def ft
       @follow = FollowThread.new(:user_id => @u_id, :athread_id => params[:id])
-  if @follow.save
-    redirect_to follow_path
-  end
+	  if @follow.save
+		redirect_to follow_path
+	  end
   end
 
+  #submit unfollow thread request
   def uft
      @follow = FollowThread.where(user_id: @u_id, athread_id: params[:id])
     if @follow[0].destroy
@@ -74,6 +78,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  #submit follow user request
   def fu
     @follow = FollowUser.new(:user_id => @u_id, :second_user_id => params[:id])
     if @follow.save
@@ -85,6 +90,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  #submit unfollow user request
   def ufu
     
     @follow = FollowUser.where(user_id: @u_id, second_user_id: params[:id])
